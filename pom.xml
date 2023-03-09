@@ -38,7 +38,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>${javafx.maven.plugin.version}</version>
                 <configuration>
-                    <mainClass>org.calma.dag.students.semaine2.examples.AnchorPaneExample</mainClass>
+                    <mainClass>org.calma.pig.exercices.labo8.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>

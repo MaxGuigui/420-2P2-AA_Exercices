@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voici une documentation pour le formulaire :" />
+      <Text layoutX="30.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le formulaire se compose de plusieurs champs que vous devez" />
+      <Text layoutX="30.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="obligatoirement remplir. Il vous demande votre prénom, votre nom," />
+      <Text layoutX="30.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="votre date de naissance, votre courriel et pour finir vous devez " />
+      <Text layoutX="30.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="indiquer les départements que vous souhaitez inclure ou exclure " />
+      <Text layoutX="30.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de votre programme." />
+      <Text layoutX="30.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faite attention à bien vérifier vos départements et informations," />
+      <Text layoutX="30.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="car après l'envoie du formulaire vous allez devoirs nous envoyer " />
+      <Text layoutX="30.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="un mail pour modifier vos données. Un message vous rappellant " />
+      <Text layoutX="30.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de vérifier vos départements sera afficher avant d'envoyer votre " />
+      <Text layoutX="30.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="formulaire, ainsi que des erreurs vous seront affichées si vous " />
+      <Text layoutX="30.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oubliez certains champs." />
+      <Text layoutX="30.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " />
+      <Text layoutX="30.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
+      <Text layoutX="30.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ut enim ad minim veniam, quis nostrud exercitation ullamco " />
+      <Text layoutX="30.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="laboris nisi ut aliquip ex ea commodo consequat. " />
+      <Text layoutX="30.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum" />
+      <Text layoutX="30.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat" />
+      <Text layoutX="30.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="non proident, sunt in culpa qui officia deserunt mollit anim id" />
+      <Text layoutX="30.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" est laborum." />
+   </children>
+</AnchorPane>

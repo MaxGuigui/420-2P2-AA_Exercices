@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="DockerWP" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="DockerWP">
+        <serverdata>
+          <mappings>
+            <mapping deploy="" local="$PROJECT_DIR$/../../../../../../pico_tests" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

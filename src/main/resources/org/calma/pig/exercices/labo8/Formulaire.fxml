@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox minHeight="480.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.calma.pig.exercices.labo8.FormulaireController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Fichier">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edition">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Aide et documentation">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#lancerPageFAQ" text="FAQ" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancerPageDocumentation" text="Documentation" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <AnchorPane prefHeight="530.0" prefWidth="640.0">
+         <children>
+            <GridPane alignment="CENTER" maxHeight="592.0" maxWidth="700.0" prefHeight="452.0" prefWidth="640.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="491.6000213623047" minWidth="10.0" prefWidth="489.1999969482422" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="180.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fx:id="ivLogo" fitHeight="50.0" fitWidth="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@images/ocp.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fiche descriptive - OCP Corpotation" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro d'identification" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="textErrorPrenom" fill="RED" layoutX="142.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* " visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de famille" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="textErrorNom" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="* " visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="textErrorDate" fill="RED" layoutX="142.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* " visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Courriel" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="textErrorCourriel" fill="RED" layoutX="10.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* " visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Département(s)" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <TextField fx:id="tfID" disable="true" editable="false" text="PRE-NOM-JJ-AA" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" right="10.0" top="5.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Saisissez votre identifiant." />
+                     </tooltip>
+                  </TextField>
+                  <TextField fx:id="tfPrenom" onKeyTyped="#onKeyTypedTextField" promptText="obligatoire / minimum 3 de long" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Saisissez votre prénom." />
+                     </tooltip>
+                  </TextField>
+                  <TextField fx:id="tfNom" onKeyTyped="#onKeyTypedTextField" promptText="obligatoire / minimum 3 de long" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Saisissez votre nom de famille." />
+                     </tooltip>
+                  </TextField>
+                  <DatePicker fx:id="dpDate" minHeight="0.0" onAction="#onActionDatePicker" prefWidth="250.0" promptText="obligatoire / avant aujourd'hui" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <tooltip>
+                        <Tooltip text="Saisissez votre date de naissance." />
+                     </tooltip>
+                  </DatePicker>
+                  <HBox alignment="CENTER" prefHeight="37.0" prefWidth="490.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <children>
+                        <TextField fx:id="tfCourriel" onKeyTyped="#onKeyTypedTextField" prefWidth="464.0" promptText="obligatoire / doit contenir un '@' et un '.'">
+                           <tooltip>
+                              <Tooltip text="Saisissez votre courriel." />
+                           </tooltip>
+                        </TextField>
+                        <ImageView fx:id="ivCourrielValid" fitHeight="25.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/email_invalid.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <AnchorPane prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <children>
+                        <Text layoutX="39.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inclu(s)" />
+                        <ListView fx:id="lvInclus" layoutX="39.0" layoutY="42.0" prefHeight="150.0" prefWidth="150.0">
+                           <tooltip>
+                              <Tooltip text="Départements auquels vous être inclus." />
+                           </tooltip>
+                        </ListView>
+                        <Button fx:id="btnExVersIn" layoutX="220.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#onClickBtnExVersIn" text="&lt;">
+                           <tooltip>
+                              <Tooltip text="Envoie le département séléctionné des exclus jusqu'au inclus." />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="btnInVersEx" layoutX="220.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#onClickBtnInVersEx" text="&gt;">
+                           <tooltip>
+                              <Tooltip text="Envoie le département séléctionné des inclus jusqu'au exclus." />
+                           </tooltip>
+                        </Button>
+                        <Text layoutX="280.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exclu(s)" />
+                        <ListView fx:id="lvExclus" layoutX="280.0" layoutY="42.0" prefHeight="150.0" prefWidth="150.0">
+                           <tooltip>
+                              <Tooltip text="Départements auquels vous être exclus." />
+                           </tooltip>
+                        </ListView>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="btnVerif" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onClickBtnVerif" text="Vérifier et Envoyer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Text fx:id="textError" fill="#f40000" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets right="130.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="textInfos" fill="#2c7cfc" layoutX="580.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets right="130.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>

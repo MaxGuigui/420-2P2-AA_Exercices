@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voici une documentation pour le formulaire :" />
+      <Text layoutX="28.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment est réalisé le numéro d'identification ?">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="31.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le numéro d'identification est un code unique vous représentant" />
+      <Text layoutX="31.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="qui est une fusion des 3 premières lettres de votre prénom, suivis" />
+      <Text layoutX="31.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="des 3 premières lettres de votre nom de famille, de votre jour" />
+      <Text layoutX="31.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de naissance et pour finir votre année de naissance." />
+      <Text layoutX="26.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ?">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="31.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " />
+      <Text layoutX="31.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
+      <Text layoutX="31.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ut enim ad minim veniam, quis nostrud exercitation ullamco " />
+      <Text layoutX="31.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="laboris nisi ut aliquip ex ea commodo consequat. " />
+      <Text layoutX="28.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ?">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " />
+      <Text layoutX="33.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
+      <Text layoutX="33.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ut enim ad minim veniam, quis nostrud exercitation ullamco " />
+      <Text layoutX="33.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="laboris nisi ut aliquip ex ea commodo consequat. " />
+   </children>
+</AnchorPane>

@@ -9,5 +9,9 @@
         <module name="420-4P2-AA_Exercices" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="420-4P2-AA_Correction" target="11" />
+      <module name="420-4P2-AA_Students" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
