@@ -87,7 +87,8 @@ public class Calculatrice extends Application {
         Paint cyan = Color.rgb(59,183,255,1);
         Paint blue = Color.rgb(0,140,255,1);
         BackgroundUtils bgUtils = new BackgroundUtils();
-        boutons.setBackground(bgUtils.createBgWithColor(cyan));
+        bgUtils.setPaint(cyan);
+        boutons.setBackground(bgUtils.createBackground());
 
         calculette.getChildren().add(ligneInput1);
         calculette.getChildren().add(ligneInput2);
