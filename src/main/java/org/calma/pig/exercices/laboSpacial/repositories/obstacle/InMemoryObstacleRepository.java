@@ -48,16 +48,16 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
         List<Cell> entry = new ArrayList<>();
         entry.add(new Cell(0,2));
 
-        Obstacle empl = new Obstacle(
+        Obstacle obstacle = new Obstacle(
                 ObstacleType.TOILETTES,
                 "Toilettes1",
                 "Toilettes du chef",
                 geo,
                 entry,
                 new Cell(5,5));
-        empl.setColor(Color.GREEN);
+        obstacle.setColor(Color.GREEN);
 
-        data.add(empl);
+        data.add(obstacle);
 
         //loadFromMemory();
 
@@ -99,13 +99,13 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
         newObstacle.setColor(obstacle.getColor());
 
-        this.saveEmplacement(obstacle);
+        this.saveObstacle(obstacle);
     }
 
     public void saveFromMemory() {
         for (Iterator<Obstacle> iterator = data.iterator(); iterator.hasNext(); ) {
             Obstacle obstacle = iterator.next();
-            this.saveEmplacement(obstacle);
+            this.saveObstacle(obstacle);
         }
         System.out.printf("Saved from memory!");
     }
@@ -126,12 +126,12 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
         for (Iterator<Obstacle> iterator = data.iterator(); iterator.hasNext(); ) {
             Obstacle obstacle =  iterator.next();
 
-            URL resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
+            URL resource = getClass().getResource("/obstacles/" + obstacle.getName() + ".json");
             //resource not found so we create a new file
             if(resource == null){
                 File file = null;
                 try {
-                    file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + obstacle.getName() + ".json");
+                    file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/obstacles/" + obstacle.getName() + ".json");
                     System.out.println(file.getPath());
                     file.createNewFile();
                 } catch (URISyntaxException | IOException e) {
@@ -140,7 +140,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
             }
 
             //open the newly created resource OR the existing resource
-            resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
+            resource = getClass().getResource("/obstacles/" + obstacle.getName() + ".json");
 
             File f = null;
             try {
@@ -155,13 +155,13 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
         }
     }
 
-    public void saveEmplacement(Obstacle obstacle){
-        URL resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
+    public void saveObstacle(Obstacle obstacle){
+        URL resource = getClass().getResource("/obstacles/" + obstacle.getName() + ".json");
         //resource not found so we create a new file
         if(resource == null){
             File file = null;
             try {
-                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + obstacle.getName() + ".json");
+                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/obstacles/" + obstacle.getName() + ".json");
                 file.createNewFile();
             } catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
@@ -169,7 +169,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
         }
 
         //open the newly created resource OR the existing resource
-        resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
+        resource = getClass().getResource("/obstacles/" + obstacle.getName() + ".json");
 
         File f = null;
         try {
@@ -189,7 +189,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
         File f = null;
         try {
-            f = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/");
+            f = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/obstacles/");
         }
         catch (URISyntaxException e) {
             e.printStackTrace();

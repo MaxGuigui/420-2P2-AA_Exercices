@@ -13,12 +13,12 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SpaceGrid extends Grid {
-    private IObstacleRepository emplacementRepository;
+    private IObstacleRepository obstacleRepository;
 
-    public SpaceGrid(IObstacleRepository emplacementRepository, int columns, int rows) throws IOException {
+    public SpaceGrid(IObstacleRepository obstacleRepository, int columns, int rows) throws IOException {
         super(columns, rows);
 
-        this.emplacementRepository = emplacementRepository;
+        this.obstacleRepository = obstacleRepository;
 
         // Cell clicked
         this.setOnMouseClicked(new CellListener.CellClickListener(this));
@@ -27,7 +27,7 @@ public class SpaceGrid extends Grid {
         // Cell hovered over
         this.setOnMouseMoved(new CellListener.CellHoverListener(this));
 
-        this.initializeGrid(this.emplacementRepository.findAll());
+        this.initializeGrid(this.obstacleRepository.findAll());
     }
 
     public void initializeGrid(List<Obstacle> obstacles) {

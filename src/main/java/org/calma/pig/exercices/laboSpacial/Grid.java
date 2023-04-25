@@ -8,8 +8,8 @@ import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 
 public abstract class Grid extends Pane implements IGridEvents {
     private Canvas canvas;
-    private int rows = 5;
-    private int columns = 5;
+    private int rows = 100;
+    private int columns = 100;
     private int cellSize = 10;
     private double zoomFactor = 1;
 
@@ -47,40 +47,30 @@ public abstract class Grid extends Pane implements IGridEvents {
         }
     }
 
-//    private void drawGrid() {
-//        GraphicsContext gc = canvas.getGraphicsContext2D();
-//        gc.clearRect(0,0,canvas.getWidth(), canvas.getHeight());
-//        gc.setFill(Color.WHITE);
-//        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-//
-//        for (int i = 0; i < columns; i++) {
-//            for (int j = 0; j < rows; j++) {
-//                gc.re
-//            }
-//        }
-//    }
-private void drawGrid() {
-    double canvasWidth = canvas.getWidth();
-    double canvasHeight = canvas.getHeight();
+    private void drawGrid() {
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
 
-    GraphicsContext gc = canvas.getGraphicsContext2D();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
 
-    gc.clearRect(0, 0, canvasWidth, canvasHeight);
+        gc.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    gc.setStroke(Color.BLACK);
-    gc.setLineWidth(1);
-    for (int col = 0; col < columns; col++) {
-        for (int row = 0; row < rows; row++) {
-            Cell cell = cells[row][col];
-            gc.setFill(cell.getColor());
-            double x = col * cellSize * zoomFactor;
-            double y = row * cellSize * zoomFactor;
-            gc.fillRect(y + 1, x + 1, cellSize * zoomFactor - 1, cellSize * zoomFactor - 1);
-            gc.strokeLine(0, x, canvasWidth, x);
-            gc.strokeLine(y, 0, y, canvasHeight);
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(1);
+        for (int col = 0; col < columns; col++) {
+            for (int row = 0; row < rows; row++) {
+                Cell cell = cells[row][col];
+                gc.setFill(cell.getColor());
+                double x = col * cellSize * zoomFactor;
+                double y = row * cellSize * zoomFactor;
+                gc.fillRect(y + 1, x + 1, cellSize * zoomFactor - 1, cellSize * zoomFactor - 1);
+//                DRAW HORIZONTAL LINES
+                gc.strokeLine(0, x+0.5, canvasWidth, x);
+//                DRAW VERTICAL LINES
+                gc.strokeLine(y+0.5, 0, y, canvasHeight);
+            }
         }
     }
-}
 
     public Cell[][] getCells() {
         return cells;

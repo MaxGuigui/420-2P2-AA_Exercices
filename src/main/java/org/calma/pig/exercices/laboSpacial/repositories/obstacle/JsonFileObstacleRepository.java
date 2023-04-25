@@ -56,7 +56,7 @@ public class JsonFileObstacleRepository implements IObstacleRepository {
 
         File f = null;
         try {
-            f = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/");
+            f = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/obstacles/");
         }
         catch (URISyntaxException e) {
             e.printStackTrace();
@@ -89,12 +89,12 @@ public class JsonFileObstacleRepository implements IObstacleRepository {
     }
 
     public void createORupdate(Obstacle obstacle){
-        URL resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
+        URL resource = getClass().getResource("/obstacles/" + obstacle.getName() + ".json");
         //resource not found so we create a new file
         if(resource == null){
             File file = null;
             try {
-                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + obstacle.getName() + ".json");
+                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/obstacles/" + obstacle.getName() + ".json");
                 file.createNewFile();
             } catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
@@ -102,7 +102,7 @@ public class JsonFileObstacleRepository implements IObstacleRepository {
         }
 
         //open the newly created resource OR the existing resource
-        resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
+        resource = getClass().getResource("/obstacles/" + obstacle.getName() + ".json");
 
         File f = null;
         try {
