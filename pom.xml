@@ -32,7 +32,13 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>17.0.1</version></dependency>
+            <version>17.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.kurobako</groupId>
+            <artifactId>gesturefx</artifactId>
+            <version>0.7.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -42,7 +48,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>${javafx.maven.plugin.version}</version>
                 <configuration>
-                    <mainClass>org.calma.pig.exercices.laboSimon.Application</mainClass>
+                    <mainClass>org.calma.pig.exercices.laboCollegeGrid.CollegeGridApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
