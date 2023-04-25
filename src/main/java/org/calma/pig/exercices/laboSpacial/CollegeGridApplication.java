@@ -1,16 +1,14 @@
-package org.calma.pig.exercices.laboCollegeGrid;
+package org.calma.pig.exercices.laboSpacial;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import net.kurobako.gesturefx.GesturePane;
-import org.calma.pig.exercices.laboCollegeGrid.repositories.emplacement.IEmplacementRepository;
-import org.calma.pig.exercices.laboCollegeGrid.repositories.emplacement.InMemoryEmplacementRepository;
+import org.calma.pig.exercices.laboSpacial.repositories.emplacement.IEmplacementRepository;
+import org.calma.pig.exercices.laboSpacial.repositories.emplacement.InMemoryEmplacementRepository;
 
 import java.io.IOException;
 
