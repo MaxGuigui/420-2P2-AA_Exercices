@@ -1,4 +1,4 @@
-package org.calma.pig.exercices.laboSpacial.models.emplacement;
+package org.calma.pig.exercices.laboSpacial.models.obstacle;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javafx.beans.property.*;
@@ -11,11 +11,11 @@ import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Emplacement extends AbstractObject {
+public class Obstacle extends AbstractObject {
     private SimpleStringProperty description;
 
-    private ObjectProperty<EmplacementType> type;
-    private ObjectProperty<EmplacementStatus> status;
+    private ObjectProperty<ObstacleType> type;
+    private ObjectProperty<ObstacleStatus> status;
 
     private ObjectProperty<Color> color;
 
@@ -37,7 +37,7 @@ public class Emplacement extends AbstractObject {
 
     private SimpleObjectProperty<Cell> realPosition;
 
-    public Emplacement(){
+    public Obstacle(){
        this.init();
 
         this.pointDepartX.addListener((observable, oldValue, newValue) -> {
@@ -53,10 +53,10 @@ public class Emplacement extends AbstractObject {
         });
     }
 
-    public Emplacement(EmplacementType emplacementType, String name, String description, List<Cell> geometry, List<Cell> entryPoints, Cell realPosition) {
+    public Obstacle(ObstacleType obstacleType, String name, String description, List<Cell> geometry, List<Cell> entryPoints, Cell realPosition) {
         this.init();
 
-        this.setType(emplacementType);
+        this.setType(obstacleType);
         this.setName(name);
         this.setDescription(description);
         this.setGeometry(geometry);
@@ -67,8 +67,8 @@ public class Emplacement extends AbstractObject {
     private void init(){
         this.description = new SimpleStringProperty();
 
-        this.type = new SimpleObjectProperty<EmplacementType>();
-        this.status = new SimpleObjectProperty<EmplacementStatus>();
+        this.type = new SimpleObjectProperty<ObstacleType>();
+        this.status = new SimpleObjectProperty<ObstacleStatus>();
 
         this.color = new SimpleObjectProperty<Color>();
 
@@ -102,27 +102,27 @@ public class Emplacement extends AbstractObject {
         return description;
     }
 
-    public EmplacementType getType() {
+    public ObstacleType getType() {
         return type.getValue();
     }
 
-    public void setType(EmplacementType type) {
+    public void setType(ObstacleType type) {
         this.type.set(type);
     }
 
-    public ObjectProperty<EmplacementType> getTypeProperty() {
+    public ObjectProperty<ObstacleType> getTypeProperty() {
         return type;
     }
 
-    public EmplacementStatus getStatus() {
+    public ObstacleStatus getStatus() {
         return status.getValue();
     }
 
-    public void setStatus(EmplacementStatus status) {
+    public void setStatus(ObstacleStatus status) {
         this.status.set(status);
     }
 
-    public ObjectProperty<EmplacementStatus> getStatusProperty() {
+    public ObjectProperty<ObstacleStatus> getStatusProperty() {
         return status;
     }
 
@@ -266,7 +266,7 @@ public class Emplacement extends AbstractObject {
 
     @Override
     public String toString() {
-        return "Emplacement{" +
+        return "Obstacle{" +
                 "description=" + description.getValue() +
                 ", type=" + type.getValue() +
                 ", status=" + status.getValue() +

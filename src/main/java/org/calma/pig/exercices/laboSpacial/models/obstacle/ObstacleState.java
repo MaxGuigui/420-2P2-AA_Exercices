@@ -1,13 +1,13 @@
-package org.calma.pig.exercices.laboSpacial.models.emplacement;
+package org.calma.pig.exercices.laboSpacial.models.obstacle;
 
-public enum EmplacementState {
+public enum ObstacleState {
     WALKABLE("WALKABLE"),
     NOT_WALKABLE("NOT_WALKABLE"),
     ENTRY_POINT("ENTRY_POINT");
 
     private String label;
 
-    EmplacementState(String label) {
+    ObstacleState(String label) {
         this.label = label;
     }
 

@@ -7,33 +7,29 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import net.kurobako.gesturefx.GesturePane;
-import org.calma.pig.exercices.laboSpacial.repositories.emplacement.IEmplacementRepository;
-import org.calma.pig.exercices.laboSpacial.repositories.emplacement.InMemoryEmplacementRepository;
+import org.calma.pig.exercices.laboSpacial.repositories.obstacle.IObstacleRepository;
+import org.calma.pig.exercices.laboSpacial.repositories.obstacle.InMemoryObstacleRepository;
 
 import java.io.IOException;
 
-public class CollegeGridApplication extends Application {
+public class SpaceGridApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        IEmplacementRepository emplacementRepository = new InMemoryEmplacementRepository();
+        IObstacleRepository emplacementRepository = new InMemoryObstacleRepository();
 
-        CollegeGrid grilleCanvas = null;
+        SpaceGrid grilleCanvas = null;
         try {
-            grilleCanvas = new CollegeGrid(emplacementRepository, 200, 200);
+            grilleCanvas = new SpaceGrid(emplacementRepository, 200, 200);
         }
         catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-//        ImageView imageView = new ImageView(new Image("/org/calma/dag/master/images/calma_p1_2.png"));
-
         StackPane stackPane = new StackPane();
-//        stackPane.getChildren().add(imageView);
         stackPane.getChildren().add(grilleCanvas);
 
-//        StackPane.setAlignment(imageView, Pos.TOP_LEFT);
-        StackPane.setAlignment(grilleCanvas, Pos.TOP_LEFT);
+        StackPane.setAlignment(grilleCanvas, Pos.CENTER);
 
         GesturePane gp = new GesturePane(stackPane);
 
@@ -42,7 +38,7 @@ public class CollegeGridApplication extends Application {
         Scene scene = new Scene(root, 960, 540);
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
-        primaryStage.setTitle("College Grid");
+        primaryStage.setTitle("Planification spacial !");
         primaryStage.show();
     }
 

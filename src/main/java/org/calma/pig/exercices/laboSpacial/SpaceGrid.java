@@ -5,17 +5,17 @@ import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellListener;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellState;
-import org.calma.pig.exercices.laboSpacial.models.emplacement.Emplacement;
-import org.calma.pig.exercices.laboSpacial.repositories.emplacement.IEmplacementRepository;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
+import org.calma.pig.exercices.laboSpacial.repositories.obstacle.IObstacleRepository;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-public class CollegeGrid extends Grid {
-    private IEmplacementRepository emplacementRepository;
+public class SpaceGrid extends Grid {
+    private IObstacleRepository emplacementRepository;
 
-    public CollegeGrid(IEmplacementRepository emplacementRepository, int columns, int rows) throws IOException {
+    public SpaceGrid(IObstacleRepository emplacementRepository, int columns, int rows) throws IOException {
         super(columns, rows);
 
         this.emplacementRepository = emplacementRepository;
@@ -30,45 +30,45 @@ public class CollegeGrid extends Grid {
         this.initializeGrid(this.emplacementRepository.findAll());
     }
 
-    public void initializeGrid(List<Emplacement> emplacements) {
+    public void initializeGrid(List<Obstacle> obstacles) {
         // On update la position des cellules en fonction de la vraie position de l'emplacement
 
-        for (Iterator<Emplacement> iterator = emplacements.iterator(); iterator.hasNext(); ) {
-            Emplacement emplacement = iterator.next();
+        for (Iterator<Obstacle> iterator = obstacles.iterator(); iterator.hasNext(); ) {
+            Obstacle obstacle = iterator.next();
 
-            List<Cell> cells = emplacement.getGeometry();
+            List<Cell> cells = obstacle.getGeometry();
             for (Iterator<Cell> cellIterator = cells.iterator(); cellIterator.hasNext(); ) {
                 Cell cell = cellIterator.next();
 
-                Cell cellUpdated = new Cell((int) (cell.getX() + emplacement.getRealPosition().getX()),
-                                        (int) (cell.getY() + emplacement.getRealPosition().getY()),
-                                        emplacement.getColor()
+                Cell cellUpdated = new Cell((int) (cell.getX() + obstacle.getRealPosition().getX()),
+                                        (int) (cell.getY() + obstacle.getRealPosition().getY()),
+                                        obstacle.getColor()
                                 );
 
                 if(cell.getState() == CellState.NOT_WALKABLE) {
-                    cellUpdated.setColor(emplacement.getColor().darker());
+                    cellUpdated.setColor(obstacle.getColor().darker());
                 }
                 else{
-                    cellUpdated.setColor(emplacement.getColor().brighter());
+                    cellUpdated.setColor(obstacle.getColor().brighter());
                 }
 
-                cellUpdated.setLabel(emplacement.getDescription() + " " + emplacement.getType().name() + " " + cell.getType() + " " + cell.getState());
+                cellUpdated.setLabel(obstacle.getDescription() + " " + obstacle.getType().name() + " " + cell.getType() + " " + cell.getState());
 
                 this.setCell(cellUpdated);
             }
 
-            List<Cell> entryPoints = emplacement.getEntryPoints();
+            List<Cell> entryPoints = obstacle.getEntryPoints();
             for (Iterator<Cell> cellIterator = entryPoints.iterator(); cellIterator.hasNext(); ) {
                 Cell entryPoint = cellIterator.next();
 
                 Cell cellUpdated = null;
 
-                cellUpdated = new Cell( (int) (entryPoint.getX() + emplacement.getRealPosition().getX()),
-                                        (int) (entryPoint.getY() + emplacement.getRealPosition().getY()),
+                cellUpdated = new Cell( (int) (entryPoint.getX() + obstacle.getRealPosition().getX()),
+                                        (int) (entryPoint.getY() + obstacle.getRealPosition().getY()),
                                         Color.ORANGE
                 );
 
-                cellUpdated.setLabel(emplacement.getDescription() + " " + emplacement.getType().name() + " " + entryPoint.getType() + " " + entryPoint.getState());
+                cellUpdated.setLabel(obstacle.getDescription() + " " + obstacle.getType().name() + " " + entryPoint.getType() + " " + entryPoint.getState());
 
                 this.setCell(cellUpdated);
             }

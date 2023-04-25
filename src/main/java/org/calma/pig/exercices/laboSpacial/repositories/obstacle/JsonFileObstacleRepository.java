@@ -1,11 +1,11 @@
-package org.calma.pig.exercices.laboSpacial.repositories.emplacement;
+package org.calma.pig.exercices.laboSpacial.repositories.obstacle;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.jackson.ColorDeserializer;
-import org.calma.pig.exercices.laboSpacial.models.emplacement.Emplacement;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class JsonFileEmplacementRepository implements IEmplacementRepository {
-    private List<Emplacement> data;
+public class JsonFileObstacleRepository implements IObstacleRepository {
+    private List<Obstacle> data;
     private ObjectMapper mapper;
 
-    public JsonFileEmplacementRepository() {
+    public JsonFileObstacleRepository() {
         SimpleModule module = new SimpleModule();
         //module.addSerializer(Color.class, new ColorSerializer());
         module.addDeserializer(Color.class, new ColorDeserializer());
@@ -33,26 +33,26 @@ public class JsonFileEmplacementRepository implements IEmplacementRepository {
         this.data = new ArrayList<>();
     }
 
-    public List<Emplacement> findAll(){
+    public List<Obstacle> findAll(){
         return this.load();
     }
 
-    public Emplacement findByName(String name){
-        List<Emplacement> emplacements = this.load();
+    public Obstacle findByName(String name){
+        List<Obstacle> obstacles = this.load();
 
-        for (Iterator<Emplacement> iterator = emplacements.iterator(); iterator.hasNext(); ) {
-            Emplacement emplacement =  iterator.next();
-            if(emplacement.getName().compareTo(name) == 0){
-                return emplacement;
+        for (Iterator<Obstacle> iterator = obstacles.iterator(); iterator.hasNext(); ) {
+            Obstacle obstacle =  iterator.next();
+            if(obstacle.getName().compareTo(name) == 0){
+                return obstacle;
             }
         }
 
         return null;
     }
 
-    public List<Emplacement> load(){
-        List<Emplacement> ret = new ArrayList<>();
-        //ret.add(new Emplacement(EmplacementType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
+    public List<Obstacle> load(){
+        List<Obstacle> ret = new ArrayList<>();
+        //ret.add(new Obstacle(ObstacleType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
 
         File f = null;
         try {
@@ -77,8 +77,8 @@ public class JsonFileEmplacementRepository implements IEmplacementRepository {
         for (File file : files) {
             // Print the names of files and directories
             try {
-                Emplacement emplacement = mapper.readValue(file, Emplacement.class);
-                ret.add(emplacement);
+                Obstacle obstacle = mapper.readValue(file, Obstacle.class);
+                ret.add(obstacle);
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -88,13 +88,13 @@ public class JsonFileEmplacementRepository implements IEmplacementRepository {
         return ret;
     }
 
-    public void createORupdate(Emplacement emplacement){
-        URL resource = getClass().getResource("/emplacements/" + emplacement.getName() + ".json");
+    public void createORupdate(Obstacle obstacle){
+        URL resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
         //resource not found so we create a new file
         if(resource == null){
             File file = null;
             try {
-                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + emplacement.getName() + ".json");
+                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + obstacle.getName() + ".json");
                 file.createNewFile();
             } catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
@@ -102,17 +102,17 @@ public class JsonFileEmplacementRepository implements IEmplacementRepository {
         }
 
         //open the newly created resource OR the existing resource
-        resource = getClass().getResource("/emplacements/" + emplacement.getName() + ".json");
+        resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
 
         File f = null;
         try {
             f = Paths.get(resource.toURI()).toFile();
-            this.mapper.writerWithDefaultPrettyPrinter().writeValue(f, emplacement);
+            this.mapper.writerWithDefaultPrettyPrinter().writeValue(f, obstacle);
         }
         catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Saved! " + emplacement.getName());
+        System.out.println("Saved! " + obstacle.getName());
     }
 }

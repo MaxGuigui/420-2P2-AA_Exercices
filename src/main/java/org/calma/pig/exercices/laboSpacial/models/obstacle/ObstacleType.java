@@ -1,6 +1,6 @@
-package org.calma.pig.exercices.laboSpacial.models.emplacement;
+package org.calma.pig.exercices.laboSpacial.models.obstacle;
 
-public enum EmplacementType {
+public enum ObstacleType {
     CLASSE("CLASSE"),
     BUREAU("BUREAU"),
     ESCALIER("ESCALIER"),
@@ -11,7 +11,7 @@ public enum EmplacementType {
 
     private String label;
 
-    EmplacementType(String label) {
+    ObstacleType(String label) {
         this.label = label;
     }
 

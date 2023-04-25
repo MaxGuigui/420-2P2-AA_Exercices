@@ -1,4 +1,4 @@
-package org.calma.pig.exercices.laboSpacial.repositories.emplacement;
+package org.calma.pig.exercices.laboSpacial.repositories.obstacle;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -8,8 +8,8 @@ import org.calma.pig.exercices.laboSpacial.jackson.ColorDeserializer;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellState;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
-import org.calma.pig.exercices.laboSpacial.models.emplacement.Emplacement;
-import org.calma.pig.exercices.laboSpacial.models.emplacement.EmplacementType;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.ObstacleType;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -21,11 +21,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class InMemoryEmplacementRepository implements IEmplacementRepository {
-    private List<Emplacement> data;
+public class InMemoryObstacleRepository implements IObstacleRepository {
+    private List<Obstacle> data;
     private ObjectMapper mapper;
 
-    public InMemoryEmplacementRepository() {
+    public InMemoryObstacleRepository() {
         SimpleModule module = new SimpleModule();
         //module.addSerializer(Color.class, new ColorSerializer());
         module.addDeserializer(Color.class, new ColorDeserializer());
@@ -37,7 +37,7 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
         this.data = new ArrayList<>();
     }
 
-    public List<Emplacement> findAll(){
+    public List<Obstacle> findAll(){
 
         List<Cell> geo = new ArrayList<>();
         geo.add(new Cell(0,0));
@@ -48,8 +48,8 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
         List<Cell> entry = new ArrayList<>();
         entry.add(new Cell(0,2));
 
-        Emplacement empl = new Emplacement(
-                EmplacementType.TOILETTES,
+        Obstacle empl = new Obstacle(
+                ObstacleType.TOILETTES,
                 "Toilettes1",
                 "Toilettes du chef",
                 geo,
@@ -65,47 +65,47 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
     }
 
     @Override
-    public void createORupdate(Emplacement emplacement){
-        //si l'emplacement existe, on le remplace
-        Emplacement e = this.findByName(emplacement.getName());
+    public void createORupdate(Obstacle obstacle){
+        //si l'obstacle existe, on le remplace
+        Obstacle e = this.findByName(obstacle.getName());
         if(e!= null){
             this.data.remove(e);
         }
 
-        this.data.add(emplacement);
+        this.data.add(obstacle);
     }
 
     public void loadFromMemory(){
-        List<Emplacement> emplacements = new ArrayList<>();
+        List<Obstacle> obstacles = new ArrayList<>();
 
-        this.data = emplacements;
+        this.data = obstacles;
     }
 
-    public Emplacement findByName(String name){
-        List<Emplacement> emplacements = this.load();
+    public Obstacle findByName(String name){
+        List<Obstacle> obstacles = this.load();
 
-        for (Iterator<Emplacement> iterator = emplacements.iterator(); iterator.hasNext(); ) {
-            Emplacement emplacement =  iterator.next();
-            if(emplacement.getName().compareTo(name) == 0){
-                return emplacement;
+        for (Iterator<Obstacle> iterator = obstacles.iterator(); iterator.hasNext(); ) {
+            Obstacle obstacle =  iterator.next();
+            if(obstacle.getName().compareTo(name) == 0){
+                return obstacle;
             }
         }
 
         return null;
     }
 
-    public void updateByName(String name, Emplacement newEmplacement){
-        Emplacement emplacement = this.findByName(name);
+    public void updateByName(String name, Obstacle newObstacle){
+        Obstacle obstacle = this.findByName(name);
 
-        newEmplacement.setColor(emplacement.getColor());
+        newObstacle.setColor(obstacle.getColor());
 
-        this.saveEmplacement(emplacement);
+        this.saveEmplacement(obstacle);
     }
 
     public void saveFromMemory() {
-        for (Iterator<Emplacement> iterator = data.iterator(); iterator.hasNext(); ) {
-            Emplacement emplacement = iterator.next();
-            this.saveEmplacement(emplacement);
+        for (Iterator<Obstacle> iterator = data.iterator(); iterator.hasNext(); ) {
+            Obstacle obstacle = iterator.next();
+            this.saveEmplacement(obstacle);
         }
         System.out.printf("Saved from memory!");
     }
@@ -123,15 +123,15 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
         mapper.registerModule(module);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        for (Iterator<Emplacement> iterator = data.iterator(); iterator.hasNext(); ) {
-            Emplacement emplacement =  iterator.next();
+        for (Iterator<Obstacle> iterator = data.iterator(); iterator.hasNext(); ) {
+            Obstacle obstacle =  iterator.next();
 
-            URL resource = getClass().getResource("/emplacements/" + emplacement.getName() + ".json");
+            URL resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
             //resource not found so we create a new file
             if(resource == null){
                 File file = null;
                 try {
-                    file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + emplacement.getName() + ".json");
+                    file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + obstacle.getName() + ".json");
                     System.out.println(file.getPath());
                     file.createNewFile();
                 } catch (URISyntaxException | IOException e) {
@@ -140,28 +140,28 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
             }
 
             //open the newly created resource OR the existing resource
-            resource = getClass().getResource("/emplacements/" + emplacement.getName() + ".json");
+            resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
 
             File f = null;
             try {
                 f = Paths.get(resource.toURI()).toFile();
-                mapper.writerWithDefaultPrettyPrinter().writeValue(f, emplacement);
+                mapper.writerWithDefaultPrettyPrinter().writeValue(f, obstacle);
             }
             catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
             }
 
-            System.out.println("Saved! " + emplacement.getName());
+            System.out.println("Saved! " + obstacle.getName());
         }
     }
 
-    public void saveEmplacement(Emplacement emplacement){
-        URL resource = getClass().getResource("/emplacements/" + emplacement.getName() + ".json");
+    public void saveEmplacement(Obstacle obstacle){
+        URL resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
         //resource not found so we create a new file
         if(resource == null){
             File file = null;
             try {
-                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + emplacement.getName() + ".json");
+                file = new File(Paths.get(getClass().getResource("/").toURI()).toFile() + "/emplacements/" + obstacle.getName() + ".json");
                 file.createNewFile();
             } catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
@@ -169,23 +169,23 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
         }
 
         //open the newly created resource OR the existing resource
-        resource = getClass().getResource("/emplacements/" + emplacement.getName() + ".json");
+        resource = getClass().getResource("/emplacements/" + obstacle.getName() + ".json");
 
         File f = null;
         try {
             f = Paths.get(resource.toURI()).toFile();
-            this.mapper.writerWithDefaultPrettyPrinter().writeValue(f, emplacement);
+            this.mapper.writerWithDefaultPrettyPrinter().writeValue(f, obstacle);
         }
         catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Saved! " + emplacement.getName());
+        System.out.println("Saved! " + obstacle.getName());
     }
 
-    public List<Emplacement> load(){
-        List<Emplacement> ret = new ArrayList<>();
-        ret.add(new Emplacement(EmplacementType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
+    public List<Obstacle> load(){
+        List<Obstacle> ret = new ArrayList<>();
+        ret.add(new Obstacle(ObstacleType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
 
         File f = null;
         try {
@@ -207,8 +207,8 @@ public class InMemoryEmplacementRepository implements IEmplacementRepository {
         for (File file : files) {
             // Print the names of files and directories
             try {
-                Emplacement emplacement = mapper.readValue(file, Emplacement.class);
-                ret.add(emplacement);
+                Obstacle obstacle = mapper.readValue(file, Obstacle.class);
+                ret.add(obstacle);
             }
             catch (IOException e) {
                 e.printStackTrace();

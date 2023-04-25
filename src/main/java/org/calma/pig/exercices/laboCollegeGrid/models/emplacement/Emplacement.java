@@ -266,7 +266,7 @@ public class Emplacement extends AbstractObject {
 
     @Override
     public String toString() {
-        return "Emplacement{" +
+        return "Obstacle{" +
                 "description=" + description.getValue() +
                 ", type=" + type.getValue() +
                 ", status=" + status.getValue() +
