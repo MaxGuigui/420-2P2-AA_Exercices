@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--<StackPane>-->
+<!--   <GridPane>-->
+<!--   </GridPane>-->
+<!--</StackPane>-->
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.calma.pig.exercices.laboTempete.TempeteController">
+   <children>
+      <GridPane fx:id="fond">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <AnchorPane fx:id="applie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+            <children>
+               <AnchorPane fx:id="menu" layoutX="280.0" layoutY="440.0" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0">
+                  <children>
+                     <Slider fx:id="slider" blockIncrement="50.0" majorTickUnit="0.5" max="1.0" minorTickCount="0" stylesheets="@styleSheets/slider.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                     <Pane fx:id="paneSun" prefHeight="30.0" prefWidth="30.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0">
+                        <children>
+                           <ImageView fx:id="ivSun" fitHeight="25.0" fitWidth="25.0" layoutX="2.5" layoutY="2.5" pickOnBounds="true" preserveRatio="true" />
+                        </children>
+                     </Pane>
+                     <Pane fx:id="paneCloud" layoutX="115.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="185.0">
+                        <children>
+                           <ImageView fx:id="ivCloud" fitHeight="25.0" fitWidth="25.0" layoutX="2.5" layoutY="2.5" pickOnBounds="true" preserveRatio="true" />
+                        </children>
+                     </Pane>
+                     <Pane fx:id="paneSnowflake" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                        <children>
+                           <ImageView fx:id="ivSnowflake" fitHeight="25.0" fitWidth="25.0" layoutX="2.5" layoutY="2.5" pickOnBounds="true" preserveRatio="true" />
+                        </children>
+                     </Pane>
+                  </children>
+               </AnchorPane>
+            <Pane fx:id="paneFPS" prefHeight="30.0" prefWidth="30.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <children>
+                  <Text fx:id="textFPS" fill="WHITE" layoutX="10.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Text>
+               </children>
+            </Pane>
+            </children>
+         </AnchorPane>
+         <Rectangle fx:id="filtre" arcHeight="5.0" arcWidth="5.0" fill="#a8a7a77e" height="50.0" stroke="#a8a7a780" strokeType="INSIDE" width="50.0" />
+   </children>
+</StackPane>
