@@ -28,7 +28,7 @@ public class SpaceGridApplication extends Application {
             throw new RuntimeException(e);
         }
 
-        BorderPane root = initRoot(grilleCanvas, false);
+        BorderPane root = initRoot(grilleCanvas, true);
 
         Scene scene = new Scene(root, 960, 540);
         primaryStage.setScene(scene);
