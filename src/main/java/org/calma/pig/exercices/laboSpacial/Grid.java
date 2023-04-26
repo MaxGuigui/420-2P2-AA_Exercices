@@ -66,22 +66,28 @@ public abstract class Grid extends Pane implements IGridEvents {
                 gc.fillRect(y + 1, x + 1, cellSize * zoomFactor - 1, cellSize * zoomFactor - 1);
 
 //                DRAW HORIZONTAL LINES
-                if((col +5) % 10 == 0){
+                if((col + 5) % 10 == 0){
                     gc.setStroke(Color.RED);
+                }
+                else if (col == columns/2) {
+                    gc.setStroke(Color.BLACK);
                 }
                 else{
                     gc.setStroke(Color.GRAY);
                 }
-                gc.strokeLine(0, x+0.5, canvasWidth, x);
+                gc.strokeLine(0, x + 0.5, canvasWidth, x);
 
 //                DRAW VERTICAL LINES
-                if((row+5) % 10 == 0){
+                if((row + 5) % 10 == 0){
                     gc.setStroke(Color.RED);
+                }
+                else if (row == rows/2) {
+                    gc.setStroke(Color.BLACK);
                 }
                 else{
                     gc.setStroke(Color.GRAY);
                 }
-                gc.strokeLine(y+0.5, 0, y, canvasHeight);
+                gc.strokeLine(y + 0.5, 0, y, canvasHeight);
             }
         }
     }
