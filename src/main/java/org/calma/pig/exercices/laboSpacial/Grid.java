@@ -8,9 +8,9 @@ import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 
 public abstract class Grid extends Pane implements IGridEvents {
     private Canvas canvas;
-    private int rows = 100;
-    private int columns = 100;
-    private int cellSize = 10;
+    private int rows;
+    private int columns;
+    private int cellSize = 8;
     private double zoomFactor = 1;
 
     // La liste des cellules **devrait** être maintenue ailleurs
@@ -55,8 +55,6 @@ public abstract class Grid extends Pane implements IGridEvents {
 
         gc.clearRect(0, 0, canvasWidth, canvasHeight);
 
-        gc.setStroke(Color.BLACK);
-        gc.setLineWidth(1);
         for (int col = 0; col < columns; col++) {
             for (int row = 0; row < rows; row++) {
                 Cell cell = cells[row][col];
@@ -67,29 +65,43 @@ public abstract class Grid extends Pane implements IGridEvents {
 
 //                DRAW HORIZONTAL LINES
                 if((col + 5) % 10 == 0){
+                    gc.setLineWidth(1.0);
                     gc.setStroke(Color.RED);
                 }
-                else if (col == columns/2) {
-                    gc.setStroke(Color.BLACK);
-                }
                 else{
+                    gc.setLineWidth(1.0);
                     gc.setStroke(Color.GRAY);
                 }
-                gc.strokeLine(0, x + 0.5, canvasWidth, x);
+                gc.strokeLine(0, x + 0.5, canvasWidth, x + 0.5);
 
 //                DRAW VERTICAL LINES
                 if((row + 5) % 10 == 0){
+                    gc.setLineWidth(1.0);
                     gc.setStroke(Color.RED);
                 }
-                else if (row == rows/2) {
-                    gc.setStroke(Color.BLACK);
-                }
                 else{
+                    gc.setLineWidth(1.0);
                     gc.setStroke(Color.GRAY);
                 }
-                gc.strokeLine(y + 0.5, 0, y, canvasHeight);
+                gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
             }
         }
+        double x = columns / 2.0 * cellSize * zoomFactor;
+        double y = rows / 2.0 * cellSize * zoomFactor;
+
+        gc.setLineWidth(1.0);
+        gc.setStroke(Color.BLACK);
+        gc.strokeLine(0, x + 0.5, canvasWidth, x + 0.5);
+        gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
+
+        x = columns * cellSize * zoomFactor;
+        y = rows * cellSize * zoomFactor;
+
+        gc.setLineWidth(2.0);
+        gc.strokeLine(0, 0.5, canvasWidth, 0.5);
+        gc.strokeLine(0.5, 0, 0.5, canvasHeight);
+        gc.strokeLine(0, x + 0.5, canvasWidth, x + 0.5);
+        gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
     }
 
     public Cell[][] getCells() {

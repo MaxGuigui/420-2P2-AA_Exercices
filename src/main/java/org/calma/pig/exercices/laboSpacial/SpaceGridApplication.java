@@ -15,14 +15,19 @@ import org.calma.pig.utils.BorderUtils;
 import java.io.IOException;
 
 public class SpaceGridApplication extends Application {
+    private int rows;
+    private int columns;
 
     @Override
     public void start(Stage primaryStage) {
         IObstacleRepository emplacementRepository = new InMemoryObstacleRepository();
 
+        rows = 100;
+        columns = 100;
+
         SpaceGrid grilleCanvas = null;
         try {
-            grilleCanvas = new SpaceGrid(emplacementRepository, 100, 100);
+            grilleCanvas = new SpaceGrid(emplacementRepository, columns, rows);
         }
         catch (IOException e) {
             throw new RuntimeException(e);
@@ -47,20 +52,21 @@ public class SpaceGridApplication extends Application {
 
         StackPane.setAlignment(spaceGrid, Pos.CENTER);
 
-        BorderUtils borderU = new BorderUtils();
-        stackPane.setBorder(borderU.createBorder());
-
         BorderPane root = null;
+        int cellSize = spaceGrid.getCellSize();
         if(withGesture){
             GesturePane gp = new GesturePane(stackPane);
+            gp.setMaxSize(cellSize * columns + 0.5, cellSize * rows + 0.5);
 
             root = new BorderPane(gp);
         }
         else{
+            stackPane.setMaxSize(cellSize * columns + 0.5, cellSize * rows + 0.5);
+
             root = new BorderPane(stackPane);
         }
 
-        root.setPadding(new Insets(80.0, 40.0, 20.0, 40.0));
+        root.setPadding(new Insets(40.0, 0.0, 40.0, 0.0));
 
         return root;
     }
