@@ -45,10 +45,10 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
 
         Obstacle ob1 = new Obstacle(
-                "Toilettes1",
-                "Toilettes du chef",
+                "Obstacle1",
+                "Obstacle rectangulaire vert",
                 cellsOb1,
-                new Cell(5,5));
+                new Cell(18,5));
         ob1.setColor(Color.GREEN);
 
         data.add(ob1);

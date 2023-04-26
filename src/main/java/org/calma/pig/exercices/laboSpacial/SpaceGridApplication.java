@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import net.kurobako.gesturefx.GesturePane;
 import org.calma.pig.exercices.laboSpacial.repositories.obstacle.IObstacleRepository;
 import org.calma.pig.exercices.laboSpacial.repositories.obstacle.InMemoryObstacleRepository;
-import org.calma.pig.utils.BorderUtils;
 
 import java.io.IOException;
 

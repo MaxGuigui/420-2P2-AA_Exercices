@@ -57,11 +57,8 @@ public abstract class Grid extends Pane implements IGridEvents {
 
         for (int col = 0; col < columns; col++) {
             for (int row = 0; row < rows; row++) {
-                Cell cell = cells[row][col];
-                gc.setFill(cell.getColor());
                 double x = col * cellSize * zoomFactor;
                 double y = row * cellSize * zoomFactor;
-                gc.fillRect(y + 1, x + 1, cellSize * zoomFactor - 1, cellSize * zoomFactor - 1);
 
 //                DRAW HORIZONTAL LINES
                 if((col + 5) % 10 == 0){
@@ -86,9 +83,23 @@ public abstract class Grid extends Pane implements IGridEvents {
                 gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
             }
         }
+//        DRAW OBSTACLES
+        for (int col = 0; col < columns; col++) {
+            for (int row = 0; row < rows; row++) {
+                Cell cell = cells[row][col];
+                double x = col * cellSize * zoomFactor;
+                double y = row * cellSize * zoomFactor;
+
+                Color colorObstacle = cell.getColor();
+
+                gc.setFill(colorObstacle);
+                gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
+            }
+        }
         double x = columns / 2.0 * cellSize * zoomFactor;
         double y = rows / 2.0 * cellSize * zoomFactor;
 
+//        DRAW X AND Y AXES
         gc.setLineWidth(1.0);
         gc.setStroke(Color.BLACK);
         gc.strokeLine(0, x + 0.5, canvasWidth, x + 0.5);
@@ -97,6 +108,7 @@ public abstract class Grid extends Pane implements IGridEvents {
         x = columns * cellSize * zoomFactor;
         y = rows * cellSize * zoomFactor;
 
+//        DRAW BORDERS
         gc.setLineWidth(2.0);
         gc.strokeLine(0, 0.5, canvasWidth, 0.5);
         gc.strokeLine(0.5, 0, 0.5, canvasHeight);
