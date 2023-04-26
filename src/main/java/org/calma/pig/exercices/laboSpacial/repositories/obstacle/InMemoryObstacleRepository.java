@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.jackson.ColorDeserializer;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
-import org.calma.pig.exercices.laboSpacial.models.cell.CellState;
-import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
-import org.calma.pig.exercices.laboSpacial.models.obstacle.ObstacleType;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -39,25 +36,22 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
     public List<Obstacle> findAll(){
 
-        List<Cell> geo = new ArrayList<>();
-        geo.add(new Cell(0,0));
-        geo.add(new Cell(0,1));
-        geo.add(new Cell(0,2));
-        geo.add(new Cell(0,3));
+        List<Cell> cellsOb1 = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 10; j++) {
+                cellsOb1.add(new Cell(i,j));
+            }
+        }
 
-        List<Cell> entry = new ArrayList<>();
-        entry.add(new Cell(0,2));
 
-        Obstacle obstacle = new Obstacle(
-                ObstacleType.TOILETTES,
+        Obstacle ob1 = new Obstacle(
                 "Toilettes1",
                 "Toilettes du chef",
-                geo,
-                entry,
+                cellsOb1,
                 new Cell(5,5));
-        obstacle.setColor(Color.GREEN);
+        ob1.setColor(Color.GREEN);
 
-        data.add(obstacle);
+        data.add(ob1);
 
         //loadFromMemory();
 
@@ -185,7 +179,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
     public List<Obstacle> load(){
         List<Obstacle> ret = new ArrayList<>();
-        ret.add(new Obstacle(ObstacleType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
+        ret.add(new Obstacle("ALL", "ALL", new ArrayList<>(), new Cell(0,0)));
 
         File f = null;
         try {

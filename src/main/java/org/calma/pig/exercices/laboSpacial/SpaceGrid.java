@@ -4,7 +4,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellListener;
-import org.calma.pig.exercices.laboSpacial.models.cell.CellState;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
 import org.calma.pig.exercices.laboSpacial.repositories.obstacle.IObstacleRepository;
 
@@ -45,30 +44,7 @@ public class SpaceGrid extends Grid {
                                         obstacle.getColor()
                                 );
 
-                if(cell.getState() == CellState.NOT_WALKABLE) {
-                    cellUpdated.setColor(obstacle.getColor().darker());
-                }
-                else{
-                    cellUpdated.setColor(obstacle.getColor().brighter());
-                }
-
-                cellUpdated.setLabel(obstacle.getDescription() + " " + obstacle.getType().name() + " " + cell.getType() + " " + cell.getState());
-
-                this.setCell(cellUpdated);
-            }
-
-            List<Cell> entryPoints = obstacle.getEntryPoints();
-            for (Iterator<Cell> cellIterator = entryPoints.iterator(); cellIterator.hasNext(); ) {
-                Cell entryPoint = cellIterator.next();
-
-                Cell cellUpdated = null;
-
-                cellUpdated = new Cell( (int) (entryPoint.getX() + obstacle.getRealPosition().getX()),
-                                        (int) (entryPoint.getY() + obstacle.getRealPosition().getY()),
-                                        Color.ORANGE
-                );
-
-                cellUpdated.setLabel(obstacle.getDescription() + " " + obstacle.getType().name() + " " + entryPoint.getType() + " " + entryPoint.getState());
+                cellUpdated.setLabel(obstacle.getDescription());
 
                 this.setCell(cellUpdated);
             }

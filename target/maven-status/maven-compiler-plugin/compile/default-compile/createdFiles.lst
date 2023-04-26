@@ -14,10 +14,7 @@ org\calma\pig\exercices\laboSpacial\models\cell\CellListener$CellClickListener.c
 org\calma\pig\exercices\laboTempete\systemeParticules\Utils.class
 org\calma\pig\exercices\laboCollegeGrid\models\cell\CellListener$CellHoverListener.class
 org\calma\pig\exercices\laboCollegeGrid\models\emplacement\Emplacement.class
-org\calma\pig\exercices\laboSpacial\models\obstacle\ObstacleState.class
 org\calma\pig\exercices\laboCollegeGrid\jackson\Point2DDeserializer.class
-org\calma\pig\exercices\laboSpacial\models\cell\CellType.class
-org\calma\pig\exercices\laboSpacial\repositories\obstacle\JsonFileObstacleRepository.class
 org\calma\pig\utils\BackgroundUtils.class
 org\calma\pig\utils\BorderUtils.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Settings.class
@@ -34,7 +31,6 @@ org\calma\pig\exercices\laboCollegeGrid\models\AbstractObject.class
 org\calma\pig\exercices\laboCollegeGrid\repositories\emplacement\InMemoryEmplacementRepository.class
 org\calma\pig\exercices\labo2\ex1\ItemsInMemory.class
 org\calma\pig\exercices\laboSpacial\SpaceGrid.class
-org\calma\pig\exercices\laboSpacial\models\obstacle\ObstacleStatus.class
 org\calma\pig\exercices\laboTempete\TempeteController.class
 org\calma\pig\exercices\laboCollegeGrid\models\cell\Cell.class
 org\calma\pig\exercices\laboCollegeGrid\models\cell\CellListener$CellClickListener.class
@@ -43,7 +39,6 @@ org\calma\pig\exercices\labo8\Application.class
 org\calma\pig\exercices\laboSpacial\Grid.class
 org\calma\pig\exercices\laboSpacial\SpaceGridApplication.class
 org\calma\pig\exercices\laboSimon\SimonController.class
-org\calma\pig\exercices\laboSpacial\models\cell\CellState.class
 org\calma\pig\exercices\laboSpacial\jackson\ColorDeserializer.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Sprite.class
 org\calma\pig\exercices\laboCollegeGrid\Grid.class
@@ -59,7 +54,6 @@ org\calma\pig\exercices\laboTempete\TempeteController$1.class
 org\calma\pig\exercices\laboTempete\Constantes.class
 org\calma\pig\exercices\laboSpacial\models\cell\CellListener$CellHoverListener.class
 org\calma\pig\exercices\laboSpacial\models\cell\CellListener.class
-org\calma\pig\exercices\laboSpacial\models\obstacle\ObstacleType.class
 org\calma\pig\exercices\laboCollegeGrid\CollegeGrid.class
 org\calma\pig\exercices\laboCollegeGrid\repositories\emplacement\IEmplacementRepository.class
 org\calma\pig\exercices\laboSpacial\jackson\Point2DDeserializer.class

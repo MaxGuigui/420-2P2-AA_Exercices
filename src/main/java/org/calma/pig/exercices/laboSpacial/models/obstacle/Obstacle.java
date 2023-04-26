@@ -14,9 +14,6 @@ import java.util.List;
 public class Obstacle extends AbstractObject {
     private SimpleStringProperty description;
 
-    private ObjectProperty<ObstacleType> type;
-    private ObjectProperty<ObstacleStatus> status;
-
     private ObjectProperty<Color> color;
 
     private SimpleDoubleProperty rotation;
@@ -33,7 +30,6 @@ public class Obstacle extends AbstractObject {
     private SimpleStringProperty imagePointEntree;
 
     private SimpleListProperty<Cell> geometry;
-    private SimpleListProperty<Cell> entryPoints;
 
     private SimpleObjectProperty<Cell> realPosition;
 
@@ -53,22 +49,17 @@ public class Obstacle extends AbstractObject {
         });
     }
 
-    public Obstacle(ObstacleType obstacleType, String name, String description, List<Cell> geometry, List<Cell> entryPoints, Cell realPosition) {
+    public Obstacle(String name, String description, List<Cell> geometry, Cell realPosition) {
         this.init();
 
-        this.setType(obstacleType);
         this.setName(name);
         this.setDescription(description);
         this.setGeometry(geometry);
-        this.setEntryPoints(entryPoints);
         this.setRealPosition(realPosition);
     }
 
     private void init(){
         this.description = new SimpleStringProperty();
-
-        this.type = new SimpleObjectProperty<ObstacleType>();
-        this.status = new SimpleObjectProperty<ObstacleStatus>();
 
         this.color = new SimpleObjectProperty<Color>();
 
@@ -85,7 +76,6 @@ public class Obstacle extends AbstractObject {
         this.imagePointEntree = new SimpleStringProperty();
 
         this.geometry = new SimpleListProperty<Cell>(FXCollections.observableArrayList());
-        this.entryPoints = new SimpleListProperty<Cell>(FXCollections.observableArrayList());
 
         this.realPosition = new SimpleObjectProperty<Cell>();
     }
@@ -100,30 +90,6 @@ public class Obstacle extends AbstractObject {
 
     public SimpleStringProperty getDescriptionProperty() {
         return description;
-    }
-
-    public ObstacleType getType() {
-        return type.getValue();
-    }
-
-    public void setType(ObstacleType type) {
-        this.type.set(type);
-    }
-
-    public ObjectProperty<ObstacleType> getTypeProperty() {
-        return type;
-    }
-
-    public ObstacleStatus getStatus() {
-        return status.getValue();
-    }
-
-    public void setStatus(ObstacleStatus status) {
-        this.status.set(status);
-    }
-
-    public ObjectProperty<ObstacleStatus> getStatusProperty() {
-        return status;
     }
 
     public Color getColor() {
@@ -244,18 +210,6 @@ public class Obstacle extends AbstractObject {
         this.geometry.set(FXCollections.observableList(geometry));
     }
 
-    public List<Cell> getEntryPoints() {
-        return this.entryPoints.getValue();
-    }
-
-    public SimpleListProperty<Cell> getEntryPointsProperty() {
-        return this.entryPoints;
-    }
-
-    public void setEntryPoints(List<Cell> entryPoints) {
-        this.entryPoints.set(FXCollections.observableList(entryPoints));
-    }
-
     public Cell getRealPosition() {
         return this.realPosition.getValue();
     }
@@ -268,8 +222,6 @@ public class Obstacle extends AbstractObject {
     public String toString() {
         return "Obstacle{" +
                 "description=" + description.getValue() +
-                ", type=" + type.getValue() +
-                ", status=" + status.getValue() +
                 ", color=" + color.getValue() +
                 ", " + super.toString() +
                 "} " ;
