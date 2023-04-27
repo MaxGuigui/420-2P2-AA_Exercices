@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -35,6 +36,7 @@ public class SpaceGridApplication extends Application {
         BorderPane root = initRoot(grilleCanvas, true);
 
         Scene scene = new Scene(root, 960, 540);
+        primaryStage.getIcons().add(new Image("org/calma/pig/exercices/laboSpacial/images/logo_rocket.png"));
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.setTitle("Planification spacial !");
