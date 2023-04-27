@@ -33,7 +33,7 @@ public class CircularObstacle extends Obstacle{
 
         this.setName(name);
         this.setDescription(description);
-        this.setDiametre(diametre);
+        this.setDiametre(diametre*8);
         this.setRealPosition(realPosition);
     }
 
