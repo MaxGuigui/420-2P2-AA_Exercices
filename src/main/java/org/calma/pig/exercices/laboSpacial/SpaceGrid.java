@@ -69,6 +69,7 @@ public class SpaceGrid extends Grid {
         for (int col = 0; col < columns; col++) {
             for (int row = 0; row < rows; row++) {
                 Cell cell = cells[row][col];
+
                 double x = col * cellSize * zoomFactor;
                 double y = row * cellSize * zoomFactor;
 
@@ -79,7 +80,19 @@ public class SpaceGrid extends Grid {
                     gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
                 }
                 else if (cell.getType() == CellType.CIRC_OBST) {
-                    gc.fillOval(x - 80 / 2.0,y - 50 / 2.0,80.0,50.0);
+                    CircularObstacle obstacle = null;
+
+                    for (Iterator<Obstacle> iterator = obstacles.iterator(); iterator.hasNext(); ) {
+                        Obstacle next =  iterator.next();
+
+                        if (next.getDescription().equals(cell.getLabel())){
+                            obstacle = (CircularObstacle) next;
+                        }
+                    }
+                    int diametre = obstacle.getDiametre();
+
+                    gc.fillOval(x - diametre / 2.0,y - diametre / 2.0,diametre,diametre);
+//                    gc.fillOval(x - 80 / 2.0,y - 50 / 2.0,80.0,50.0);
                 }
             }
         }
