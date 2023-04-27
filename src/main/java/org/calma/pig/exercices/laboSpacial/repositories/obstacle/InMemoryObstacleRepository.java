@@ -36,24 +36,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
     public List<Obstacle> findAll(){
 
-        List<Cell> cellsOb1 = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 10; j++) {
-                cellsOb1.add(new Cell(i,j));
-            }
-        }
-
-
-        Obstacle ob1 = new Obstacle(
-                "Obstacle1",
-                "Obstacle rectangulaire vert",
-                cellsOb1,
-                new Cell(18,5));
-        ob1.setColor(Color.GREEN);
-
-        data.add(ob1);
-
-        //loadFromMemory();
+        loadFromMemory();
 
         return this.data;
     }
@@ -71,6 +54,36 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
     public void loadFromMemory(){
         List<Obstacle> obstacles = new ArrayList<>();
+
+        List<Cell> cellsOb1 = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 10; j++) {
+                cellsOb1.add(new Cell(i,j));
+            }
+        }
+        List<Cell> cellsOb2 = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                cellsOb2.add(new Cell(i,j));
+            }
+        }
+
+        Obstacle ob1 = new Obstacle(
+                "Obstacle1",
+                "Moyen obstacle rectangulaire vert",
+                cellsOb1,
+                new Cell(18,5));
+        ob1.setColor(Color.GREEN);
+
+        Obstacle ob2 = new Obstacle(
+                "Obstacle2",
+                "Petit obstacle rectangulaire bleu",
+                cellsOb2,
+                new Cell(90,36));
+        ob2.setColor(Color.BLUE);
+
+        obstacles.add(ob1);
+        obstacles.add(ob2);
 
         this.data = obstacles;
     }
