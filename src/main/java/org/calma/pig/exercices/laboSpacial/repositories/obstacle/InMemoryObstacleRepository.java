@@ -34,6 +34,12 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
                 cellsOb2.add(new Cell(i,j));
             }
         }
+        List<Cell> cellsOb4 = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                cellsOb4.add(new Cell(i,j));
+            }
+        }
 
         RectangularObstacle ob1 = new RectangularObstacle(
                 "Obstacle1",
@@ -56,9 +62,17 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
                 new Cell(50,50));
         ob3.setColor(Color.BLUE);
 
+        RectangularObstacle ob4 = new RectangularObstacle(
+                "Obstacle4",
+                "Moyen obstacle rectangulaire rouge",
+                cellsOb4,
+                new Cell(48,72));
+        ob4.setColor(Color.RED);
+
         obstacles.add(ob1);
         obstacles.add(ob2);
         obstacles.add(ob3);
+        obstacles.add(ob4);
 
         this.data = obstacles;
     }

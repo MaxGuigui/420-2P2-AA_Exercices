@@ -33,6 +33,7 @@ public class SpaceGrid extends Grid {
         this.initializeGrid(this.obstacleRepository.findAll());
 
         this.drawObstacles();
+        this.drawAgainXYAxes();
 
         this.canvas.widthProperty().bind(widthProperty());
         this.canvas.heightProperty().bind(heightProperty());
@@ -40,6 +41,7 @@ public class SpaceGrid extends Grid {
         this.widthProperty().addListener(evt -> {
             try {
                 drawObstacles();
+                drawAgainXYAxes();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -47,6 +49,7 @@ public class SpaceGrid extends Grid {
         this.heightProperty().addListener(evt -> {
             try {
                 drawObstacles();
+                drawAgainXYAxes();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -80,6 +83,30 @@ public class SpaceGrid extends Grid {
                 }
             }
         }
+    }
+
+    private void drawAgainXYAxes(){
+
+        int columns = this.getColumns();
+        int rows = this.getRows();
+        int cellSize = this.getCellSize();
+        double zoomFactor = this.getZoomFactor();
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
+
+        double x = columns / 2.0 * cellSize * zoomFactor;
+        double y = rows / 2.0 * cellSize * zoomFactor;
+
+//        DRAW X AND Y AXES
+        gc.setLineWidth(1.0);
+        gc.setStroke(Color.BLACK);
+        gc.strokeLine(0, x + 0.5, canvasWidth, x + 0.5);
+        gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
+
+        x = columns * cellSize * zoomFactor;
+        y = rows * cellSize * zoomFactor;
     }
 
     public void initializeGrid(List<Obstacle> obstacles) {
