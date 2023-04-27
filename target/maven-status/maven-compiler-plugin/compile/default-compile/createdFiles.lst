@@ -14,6 +14,7 @@ org\calma\pig\exercices\laboTempete\systemeParticules\Utils.class
 org\calma\pig\exercices\laboCollegeGrid\models\cell\CellListener$CellHoverListener.class
 org\calma\pig\exercices\laboCollegeGrid\models\emplacement\Emplacement.class
 org\calma\pig\exercices\laboCollegeGrid\jackson\Point2DDeserializer.class
+org\calma\pig\exercices\laboSpacial\models\cell\CellType.class
 org\calma\pig\exercices\laboSpacial\models\obstacle\CircularObstacle.class
 org\calma\pig\utils\BackgroundUtils.class
 org\calma\pig\utils\BorderUtils.class
@@ -39,11 +40,9 @@ org\calma\pig\exercices\labo8\Application.class
 org\calma\pig\exercices\laboSpacial\Grid.class
 org\calma\pig\exercices\laboSpacial\SpaceGridApplication.class
 org\calma\pig\exercices\laboSimon\SimonController.class
-org\calma\pig\exercices\laboSpacial\jackson\ColorDeserializer.class
 org\calma\pig\exercices\laboSpacial\models\obstacle\RectangularObstacle.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Sprite.class
 org\calma\pig\exercices\laboCollegeGrid\Grid.class
-org\calma\pig\exercices\laboSpacial\jackson\ColorSerializer.class
 org\calma\pig\exercices\laboCollegeGrid\IGridEvents.class
 org\calma\pig\exercices\laboTempete\Application.class
 org\calma\pig\exercices\laboCollegeGrid\repositories\emplacement\JsonFileEmplacementRepository.class
@@ -57,4 +56,3 @@ org\calma\pig\exercices\laboSpacial\models\cell\CellListener$CellHoverListener.c
 org\calma\pig\exercices\laboSpacial\models\cell\CellListener.class
 org\calma\pig\exercices\laboCollegeGrid\CollegeGrid.class
 org\calma\pig\exercices\laboCollegeGrid\repositories\emplacement\IEmplacementRepository.class
-org\calma\pig\exercices\laboSpacial\jackson\Point2DDeserializer.class
