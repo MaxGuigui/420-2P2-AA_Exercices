@@ -13,24 +13,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Obstacle extends AbstractObject {
     private SimpleStringProperty description;
-
     private ObjectProperty<Color> color;
-
-    private SimpleDoubleProperty rotation;
-
     private Point2D pointDepart;
     private SimpleIntegerProperty pointDepartX;
     private SimpleIntegerProperty pointDepartY;
-
-    private SimpleStringProperty imageHaut;
-    private SimpleStringProperty imageBas;
-    private SimpleStringProperty imageGauche;
-    private SimpleStringProperty imageDroite;
-
-    private SimpleStringProperty imagePointEntree;
-
     private SimpleListProperty<Cell> geometry;
-
     private SimpleObjectProperty<Cell> realPosition;
 
     public Obstacle(){
@@ -63,17 +50,9 @@ public class Obstacle extends AbstractObject {
 
         this.color = new SimpleObjectProperty<Color>();
 
-        this.rotation = new SimpleDoubleProperty();
-
         this.pointDepart = new Point2D(0,0);
         this.pointDepartX = new SimpleIntegerProperty();
         this.pointDepartY = new SimpleIntegerProperty();
-
-        this.imageHaut = new SimpleStringProperty();
-        this.imageBas = new SimpleStringProperty();
-        this.imageDroite = new SimpleStringProperty();
-        this.imageGauche = new SimpleStringProperty();
-        this.imagePointEntree = new SimpleStringProperty();
 
         this.geometry = new SimpleListProperty<Cell>(FXCollections.observableArrayList());
 
@@ -104,18 +83,6 @@ public class Obstacle extends AbstractObject {
         return color;
     }
 
-    public Double getRotation() {
-        return rotation.getValue();
-    }
-
-    public SimpleDoubleProperty getRotationProperty() {
-        return rotation;
-    }
-
-    public void setRotation(double rotation) {
-        this.rotation.set(rotation);
-    }
-
     public Point2D getPointDepart() {
         return pointDepart;
     }
@@ -132,66 +99,6 @@ public class Obstacle extends AbstractObject {
 
     public SimpleIntegerProperty getPointDepartYProperty(){
         return this.pointDepartY;
-    }
-
-    public String getImageHaut() {
-        return imageHaut.getValue();
-    }
-
-    public SimpleStringProperty getImageHautProperty(){
-        return imageHaut;
-    }
-
-    public void setImageHaut(String imageHaut) {
-        this.imageHaut.set(imageHaut);
-    }
-
-    public String getImageBas() {
-        return imageBas.getValue();
-    }
-
-    public SimpleStringProperty getImageBasProperty(){
-        return imageBas;
-    }
-
-    public void setImageBas(String imageBas) {
-        this.imageBas.set(imageBas);
-    }
-
-    public String getImageGauche() {
-        return imageGauche.getValue();
-    }
-
-    public SimpleStringProperty getImageGaucheProperty(){
-        return imageGauche;
-    }
-
-    public void setImageGauche(String imageGauche) {
-        this.imageGauche.set(imageGauche);
-    }
-
-    public String getImageDroite() {
-        return imageDroite.getValue();
-    }
-
-    public SimpleStringProperty getImageDroiteProperty(){
-        return imageDroite;
-    }
-
-    public void setImageDroite(String imageDroite) {
-        this.imageDroite.set(imageDroite);
-    }
-
-    public String getImagePointEntree() {
-        return imagePointEntree.getValue();
-    }
-
-    public SimpleStringProperty getImagePointEntreeProperty(){
-        return imagePointEntree;
-    }
-
-    public void setImagePointEntree(String imagePointEntree) {
-        this.imagePointEntree.set(imagePointEntree);
     }
 
     public List<Cell> getGeometry() {
