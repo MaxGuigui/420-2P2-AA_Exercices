@@ -33,7 +33,6 @@ public class SpaceGrid extends Grid {
         this.initializeGrid(this.obstacleRepository.findAll());
 
         this.drawObstacles();
-        this.drawMainLines();
 
         this.canvas.widthProperty().bind(widthProperty());
         this.canvas.heightProperty().bind(heightProperty());
@@ -41,7 +40,6 @@ public class SpaceGrid extends Grid {
         this.widthProperty().addListener(evt -> {
             try {
                 drawObstacles();
-                drawMainLines();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -49,7 +47,6 @@ public class SpaceGrid extends Grid {
         this.heightProperty().addListener(evt -> {
             try {
                 drawObstacles();
-                drawMainLines();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -95,6 +92,8 @@ public class SpaceGrid extends Grid {
                 }
             }
         }
+
+        drawMainLines();
     }
 
     public void initializeGrid(List<Obstacle> obstacles) {
