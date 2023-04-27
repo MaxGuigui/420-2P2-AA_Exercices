@@ -53,7 +53,6 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
                 "Obstacle3",
                 "Gros obstacle circulaire bleu",
                 80,
-                80,
                 new Cell(50,50));
         ob3.setColor(Color.BLUE);
 

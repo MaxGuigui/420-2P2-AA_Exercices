@@ -9,8 +9,7 @@ public class CircularObstacle extends Obstacle{
     private Point2D pointDepart;
     private SimpleIntegerProperty pointDepartX;
     private SimpleIntegerProperty pointDepartY;
-    private SimpleIntegerProperty hauteur;
-    private SimpleIntegerProperty largeur;
+    private SimpleIntegerProperty diametre;
     private SimpleObjectProperty<Cell> realPosition;
 
     public CircularObstacle(){
@@ -29,13 +28,12 @@ public class CircularObstacle extends Obstacle{
         });
     }
 
-    public CircularObstacle(String name, String description, Integer hauteur, Integer largeur, Cell realPosition) {
+    public CircularObstacle(String name, String description, Integer diametre, Cell realPosition) {
         this.init();
 
         this.setName(name);
         this.setDescription(description);
-        this.setHauteur(hauteur);
-        this.setLargeur(largeur);
+        this.setDiametre(diametre);
         this.setRealPosition(realPosition);
     }
 
@@ -45,8 +43,7 @@ public class CircularObstacle extends Obstacle{
         this.pointDepartX = new SimpleIntegerProperty();
         this.pointDepartY = new SimpleIntegerProperty();
 
-        this.hauteur = new SimpleIntegerProperty();
-        this.largeur = new SimpleIntegerProperty();
+        this.diametre = new SimpleIntegerProperty();
 
         this.realPosition = new SimpleObjectProperty<Cell>();
     }
@@ -67,24 +64,14 @@ public class CircularObstacle extends Obstacle{
         return this.pointDepartY;
     }
 
-    public int getHauteur() {
-        return hauteur.get();
+    public int getDiametre() {
+        return diametre.get();
     }
-    public SimpleIntegerProperty getHauteurProperty() {
-        return hauteur;
+    public SimpleIntegerProperty diametreProperty() {
+        return diametre;
     }
-    public void setHauteur(int hauteur) {
-        this.hauteur.set(hauteur);
-    }
-
-    public int getLargeur() {
-        return largeur.get();
-    }
-    public SimpleIntegerProperty getLargeurProperty() {
-        return largeur;
-    }
-    public void setLargeur(int largeur) {
-        this.largeur.set(largeur);
+    public void setDiametre(int diametre) {
+        this.diametre.set(diametre);
     }
 
     public Cell getRealPosition() {
