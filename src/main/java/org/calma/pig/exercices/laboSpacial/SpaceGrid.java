@@ -33,7 +33,7 @@ public class SpaceGrid extends Grid {
         this.initializeGrid(this.obstacleRepository.findAll());
 
         this.drawObstacles();
-        this.drawAgainXYAxes();
+        this.drawAgainMainLines();
 
         this.canvas.widthProperty().bind(widthProperty());
         this.canvas.heightProperty().bind(heightProperty());
@@ -41,7 +41,7 @@ public class SpaceGrid extends Grid {
         this.widthProperty().addListener(evt -> {
             try {
                 drawObstacles();
-                drawAgainXYAxes();
+                drawAgainMainLines();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -49,7 +49,7 @@ public class SpaceGrid extends Grid {
         this.heightProperty().addListener(evt -> {
             try {
                 drawObstacles();
-                drawAgainXYAxes();
+                drawAgainMainLines();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -98,7 +98,7 @@ public class SpaceGrid extends Grid {
         }
     }
 
-    private void drawAgainXYAxes(){
+    private void drawAgainMainLines(){
 
         int columns = this.getColumns();
         int rows = this.getRows();
@@ -120,6 +120,13 @@ public class SpaceGrid extends Grid {
 
         x = columns * cellSize * zoomFactor;
         y = rows * cellSize * zoomFactor;
+
+//        DRAW BORDERS
+        gc.setLineWidth(2.0);
+        gc.strokeLine(0, 0.5, canvasWidth, 0.5);
+        gc.strokeLine(0.5, 0, 0.5, canvasHeight);
+        gc.strokeLine(0, x + 0.5, canvasWidth, x + 0.5);
+        gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
     }
 
     public void initializeGrid(List<Obstacle> obstacles) {
