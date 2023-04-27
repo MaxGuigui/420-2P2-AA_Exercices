@@ -8,13 +8,13 @@ org\calma\pig\exercices\laboCollegeGrid\models\emplacement\EmplacementState.clas
 org\calma\pig\exercices\laboSimon\Application.class
 org\calma\pig\exercices\laboSpacial\models\cell\Cell.class
 org\calma\pig\exercices\labo8\FormulaireController.class
-org\calma\pig\exercices\laboSpacial\models\obstacle\AbstractObstacle.class
 org\calma\pig\exercices\laboCollegeGrid\models\emplacement\EmplacementStatus.class
 org\calma\pig\exercices\laboSpacial\models\cell\CellListener$CellClickListener.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Utils.class
 org\calma\pig\exercices\laboCollegeGrid\models\cell\CellListener$CellHoverListener.class
 org\calma\pig\exercices\laboCollegeGrid\models\emplacement\Emplacement.class
 org\calma\pig\exercices\laboCollegeGrid\jackson\Point2DDeserializer.class
+org\calma\pig\exercices\laboSpacial\models\obstacle\CircularObstacle.class
 org\calma\pig\utils\BackgroundUtils.class
 org\calma\pig\utils\BorderUtils.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Settings.class
@@ -40,6 +40,7 @@ org\calma\pig\exercices\laboSpacial\Grid.class
 org\calma\pig\exercices\laboSpacial\SpaceGridApplication.class
 org\calma\pig\exercices\laboSimon\SimonController.class
 org\calma\pig\exercices\laboSpacial\jackson\ColorDeserializer.class
+org\calma\pig\exercices\laboSpacial\models\obstacle\RectangularObstacle.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Sprite.class
 org\calma\pig\exercices\laboCollegeGrid\Grid.class
 org\calma\pig\exercices\laboSpacial\jackson\ColorSerializer.class

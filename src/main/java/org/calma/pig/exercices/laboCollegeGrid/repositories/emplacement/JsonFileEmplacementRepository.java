@@ -52,7 +52,7 @@ public class JsonFileEmplacementRepository implements IEmplacementRepository {
 
     public List<Emplacement> load(){
         List<Emplacement> ret = new ArrayList<>();
-        //ret.add(new Obstacle(ObstacleType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
+        //ret.add(new Emplacement(ObstacleType.AUTRES, "ALL", "ALL", new ArrayList<>(), new ArrayList<>(), new Cell(0,0, CellState.WALKABLE, CellType.STANDARD)));
 
         File f = null;
         try {

@@ -1,10 +1,11 @@
 package org.calma.pig.exercices.laboSpacial;
 
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellListener;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.CircularObstacle;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.RectangularObstacle;
 import org.calma.pig.exercices.laboSpacial.repositories.obstacle.IObstacleRepository;
 
 import java.io.IOException;
@@ -35,19 +36,27 @@ public class SpaceGrid extends Grid {
         for (Iterator<Obstacle> iterator = obstacles.iterator(); iterator.hasNext(); ) {
             Obstacle obstacle = iterator.next();
 
-            List<Cell> cells = obstacle.getGeometry();
-            for (Iterator<Cell> cellIterator = cells.iterator(); cellIterator.hasNext(); ) {
-                Cell cell = cellIterator.next();
+            if(obstacle.getClass() == RectangularObstacle.class){
+                RectangularObstacle rectangularObstacle = (RectangularObstacle) obstacle;
 
-                Cell cellUpdated = new Cell((int) (cell.getX() + obstacle.getRealPosition().getX()),
-                                        (int) (cell.getY() + obstacle.getRealPosition().getY()),
-                                        obstacle.getColor()
-                                );
+                List<Cell> cells = rectangularObstacle.getGeometry();
+                for (Iterator<Cell> cellIterator = cells.iterator(); cellIterator.hasNext(); ) {
+                    Cell cell = cellIterator.next();
 
-                cellUpdated.setLabel(obstacle.getDescription());
+                    Cell cellUpdated = new Cell((int) (cell.getX() + rectangularObstacle.getRealPosition().getX()),
+                            (int) (cell.getY() + rectangularObstacle.getRealPosition().getY()),
+                            rectangularObstacle.getColor()
+                    );
 
-                this.setCell(cellUpdated);
+                    cellUpdated.setLabel(rectangularObstacle.getDescription());
+
+                    this.setCell(cellUpdated);
+                }
             }
+            else if (obstacle.getClass() == CircularObstacle.class) {
+                //TODO
+            }
+
         }
     }
 

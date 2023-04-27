@@ -1,103 +1,105 @@
 package org.calma.pig.exercices.laboSpacial.models.obstacle;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javafx.beans.property.*;
-import javafx.collections.FXCollections;
-import javafx.geometry.Point2D;
-import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.paint.Color;
 
-import java.util.List;
+public abstract class Obstacle {
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty name;
+    private SimpleStringProperty description;
+    private ObjectProperty<Color> color;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Obstacle extends AbstractObstacle {
-    private Point2D pointDepart;
-    private SimpleIntegerProperty pointDepartX;
-    private SimpleIntegerProperty pointDepartY;
-    private SimpleListProperty<Cell> geometry;
-    private SimpleObjectProperty<Cell> realPosition;
-
-    public Obstacle(){
-       this.init();
-
-        this.pointDepartX.addListener((observable, oldValue, newValue) -> {
-            this.pointDepart = new Point2D(newValue.doubleValue(), this.pointDepart.getY());
-
-            System.out.println(this.pointDepart);
-        });
-
-        this.pointDepartY.addListener((observable, oldValue, newValue) -> {
-            this.pointDepart = new Point2D(this.pointDepart.getX(), newValue.doubleValue());
-
-            System.out.println(this.pointDepart);
-        });
+    public Obstacle() {
+        this.id = new SimpleIntegerProperty();
+        this.name = new SimpleStringProperty();
+        this.description = new SimpleStringProperty();
+        this.color = new SimpleObjectProperty<Color>();
     }
 
-    public Obstacle(String name, String description, List<Cell> geometry, Cell realPosition) {
-        this.init();
-
-        this.setName(name);
-        this.setDescription(description);
-        this.setGeometry(geometry);
-        this.setRealPosition(realPosition);
+    public Obstacle(int id, String name, String description, Color color) {
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+        this.description = new SimpleStringProperty(description);
+        this.color = new SimpleObjectProperty<Color>(color);
     }
 
-    private void init(){
-
-        this.pointDepart = new Point2D(0,0);
-        this.pointDepartX = new SimpleIntegerProperty();
-        this.pointDepartY = new SimpleIntegerProperty();
-
-        this.geometry = new SimpleListProperty<Cell>(FXCollections.observableArrayList());
-
-        this.realPosition = new SimpleObjectProperty<Cell>();
+    public int getId() {
+        return id.getValue();
     }
 
-    public Point2D getPointDepart() {
-        return pointDepart;
+    public SimpleIntegerProperty getIdProperty() {
+        return id;
     }
 
-    public void setPointDepart(Point2D pointDepart) {
-        this.pointDepart = pointDepart;
-        this.pointDepartX.set((int)pointDepart.getX());
-        this.pointDepartY.set((int)pointDepart.getY());
+    public void setId(int id) {
+        this.id.set(id);
     }
 
-    public SimpleIntegerProperty getPointDepartXProperty(){
-        return this.pointDepartX;
+    public String getName() {
+        return name.getValue();
     }
 
-    public SimpleIntegerProperty getPointDepartYProperty(){
-        return this.pointDepartY;
+    public SimpleStringProperty getNameProperty() {
+        return name;
     }
 
-    public List<Cell> getGeometry() {
-        return geometry.getValue();
+    public void setName(String name) {
+        this.name.set(name);
     }
 
-    public SimpleListProperty<Cell> getGeometryProperty() {
-        return geometry;
+    public String getDescription() {
+        return description.get();
     }
 
-    public void addGeometry(Cell cellPosition){
-        this.geometry.getValue().add(cellPosition);
+    public SimpleStringProperty getDescriptionProperty() {
+        return description;
     }
 
-    public void setGeometry(List<Cell> geometry) {
-        this.geometry.set(FXCollections.observableList(geometry));
+    public void setDescription(String description) {
+        this.description.set(description);
     }
 
-    public Cell getRealPosition() {
-        return this.realPosition.getValue();
+    public Color getColor() {
+        return color.get();
     }
 
-    public void setRealPosition(Cell realPosition) {
-        this.realPosition.set(realPosition);
+    public ObjectProperty<Color> getColorProperty() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color.set(color);
     }
 
     @Override
     public String toString() {
         return "Obstacle{" +
-                super.toString() +
-                "} " ;
+                "id=" + id.getValue() +
+                ", name=" + name.getValue() +
+                ", description=" + description.getValue() +
+                ", color=" + color.getValue() +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Obstacle that = (Obstacle) o;
+
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

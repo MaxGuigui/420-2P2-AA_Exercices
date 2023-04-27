@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.jackson.ColorDeserializer;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.RectangularObstacle;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -43,10 +44,9 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
     @Override
     public void createORupdate(Obstacle obstacle){
-        //si l'obstacle existe, on le remplace
-        Obstacle e = this.findByName(obstacle.getName());
-        if(e!= null){
-            this.data.remove(e);
+        Obstacle o = this.findByName(obstacle.getName());
+        if(o!= null){
+            this.data.remove(o);
         }
 
         this.data.add(obstacle);
@@ -68,14 +68,14 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
             }
         }
 
-        Obstacle ob1 = new Obstacle(
+        RectangularObstacle ob1 = new RectangularObstacle(
                 "Obstacle1",
                 "Moyen obstacle rectangulaire vert",
                 cellsOb1,
                 new Cell(18,5));
         ob1.setColor(Color.GREEN);
 
-        Obstacle ob2 = new Obstacle(
+        RectangularObstacle ob2 = new RectangularObstacle(
                 "Obstacle2",
                 "Petit obstacle rectangulaire bleu",
                 cellsOb2,
@@ -192,7 +192,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
 
     public List<Obstacle> load(){
         List<Obstacle> ret = new ArrayList<>();
-        ret.add(new Obstacle("ALL", "ALL", new ArrayList<>(), new Cell(0,0)));
+        ret.add(new RectangularObstacle("ALL", "ALL", new ArrayList<>(), new Cell(0,0)));
 
         File f = null;
         try {
@@ -214,8 +214,8 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
         for (File file : files) {
             // Print the names of files and directories
             try {
-                Obstacle obstacle = mapper.readValue(file, Obstacle.class);
-                ret.add(obstacle);
+                RectangularObstacle rectangularObstacle = mapper.readValue(file, RectangularObstacle.class);
+                ret.add(rectangularObstacle);
             }
             catch (IOException e) {
                 e.printStackTrace();
