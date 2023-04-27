@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
+import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
 
 public abstract class Grid extends Pane implements IGridEvents {
     private Canvas canvas;
@@ -91,9 +92,14 @@ public abstract class Grid extends Pane implements IGridEvents {
                 double y = row * cellSize * zoomFactor;
 
                 Color colorObstacle = cell.getColor();
-
                 gc.setFill(colorObstacle);
-                gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
+
+                if(cell.getType() == CellType.RECT_OBST){
+                    gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
+                }
+                else if (cell.getType() == CellType.CIRC_OBST) {
+                    gc.fillOval(x,y,80.0,50.0);
+                }
             }
         }
         double x = columns / 2.0 * cellSize * zoomFactor;

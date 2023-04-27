@@ -3,6 +3,7 @@ package org.calma.pig.exercices.laboSpacial;
 import javafx.scene.input.MouseEvent;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellListener;
+import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.CircularObstacle;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.RectangularObstacle;
@@ -49,12 +50,22 @@ public class SpaceGrid extends Grid {
                     );
 
                     cellUpdated.setLabel(rectangularObstacle.getDescription());
+                    cellUpdated.setType(CellType.RECT_OBST);
 
                     this.setCell(cellUpdated);
                 }
             }
             else if (obstacle.getClass() == CircularObstacle.class) {
-                //TODO
+                CircularObstacle circularObstacle = (CircularObstacle) obstacle;
+
+                int x = (int)circularObstacle.getRealPosition().getX();
+                int y = (int)circularObstacle.getRealPosition().getY();
+
+                Cell cell = new Cell(x,y,circularObstacle.getColor());
+                cell.setLabel(circularObstacle.getDescription());
+                cell.setType(CellType.CIRC_OBST);
+
+                this.setCell(cell);
             }
 
         }

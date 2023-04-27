@@ -2,6 +2,7 @@ package org.calma.pig.exercices.laboSpacial.repositories.obstacle;
 
 import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
+import org.calma.pig.exercices.laboSpacial.models.obstacle.CircularObstacle;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.Obstacle;
 import org.calma.pig.exercices.laboSpacial.models.obstacle.RectangularObstacle;
 
@@ -48,9 +49,17 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
                 new Cell(90,36));
         ob2.setColor(Color.YELLOW);
 
+        CircularObstacle ob3 = new CircularObstacle(
+                "Obstacle3",
+                "Gros obstacle circulaire bleu",
+                80,
+                80,
+                new Cell(50,50));
+        ob3.setColor(Color.BLUE);
 
         obstacles.add(ob1);
         obstacles.add(ob2);
+        obstacles.add(ob3);
 
         this.data = obstacles;
     }
