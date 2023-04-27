@@ -8,8 +8,8 @@ org\calma\pig\exercices\laboCollegeGrid\models\emplacement\EmplacementState.clas
 org\calma\pig\exercices\laboSimon\Application.class
 org\calma\pig\exercices\laboSpacial\models\cell\Cell.class
 org\calma\pig\exercices\labo8\FormulaireController.class
+org\calma\pig\exercices\laboSpacial\models\obstacle\AbstractObstacle.class
 org\calma\pig\exercices\laboCollegeGrid\models\emplacement\EmplacementStatus.class
-org\calma\pig\exercices\laboSpacial\models\AbstractObject.class
 org\calma\pig\exercices\laboSpacial\models\cell\CellListener$CellClickListener.class
 org\calma\pig\exercices\laboTempete\systemeParticules\Utils.class
 org\calma\pig\exercices\laboCollegeGrid\models\cell\CellListener$CellHoverListener.class

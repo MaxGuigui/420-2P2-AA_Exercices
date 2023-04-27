@@ -4,16 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-import org.calma.pig.exercices.laboSpacial.models.AbstractObject;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Obstacle extends AbstractObject {
-    private SimpleStringProperty description;
-    private ObjectProperty<Color> color;
+public class Obstacle extends AbstractObstacle {
     private Point2D pointDepart;
     private SimpleIntegerProperty pointDepartX;
     private SimpleIntegerProperty pointDepartY;
@@ -46,9 +42,6 @@ public class Obstacle extends AbstractObject {
     }
 
     private void init(){
-        this.description = new SimpleStringProperty();
-
-        this.color = new SimpleObjectProperty<Color>();
 
         this.pointDepart = new Point2D(0,0);
         this.pointDepartX = new SimpleIntegerProperty();
@@ -57,30 +50,6 @@ public class Obstacle extends AbstractObject {
         this.geometry = new SimpleListProperty<Cell>(FXCollections.observableArrayList());
 
         this.realPosition = new SimpleObjectProperty<Cell>();
-    }
-
-    public String getDescription() {
-        return description.getValue();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public SimpleStringProperty getDescriptionProperty() {
-        return description;
-    }
-
-    public Color getColor() {
-        return color.getValue();
-    }
-
-    public void setColor(Color color) {
-        this.color.set(color);
-    }
-
-    public ObjectProperty<Color> getColorProperty() {
-        return color;
     }
 
     public Point2D getPointDepart() {
@@ -128,9 +97,7 @@ public class Obstacle extends AbstractObject {
     @Override
     public String toString() {
         return "Obstacle{" +
-                "description=" + description.getValue() +
-                ", color=" + color.getValue() +
-                ", " + super.toString() +
+                super.toString() +
                 "} " ;
     }
 }
