@@ -76,7 +76,7 @@ public class SpaceGrid extends Grid {
                     gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
                 }
                 else if (cell.getType() == CellType.CIRC_OBST) {
-                    gc.fillOval(x,y,80.0,50.0);
+                    gc.fillOval(x - 80 / 2.0,y - 50 / 2.0,80.0,50.0);
                 }
             }
         }
