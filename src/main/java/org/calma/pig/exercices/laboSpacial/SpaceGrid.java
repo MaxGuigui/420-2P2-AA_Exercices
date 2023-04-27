@@ -1,6 +1,8 @@
 package org.calma.pig.exercices.laboSpacial;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellListener;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
@@ -29,6 +31,55 @@ public class SpaceGrid extends Grid {
         this.setOnMouseMoved(new CellListener.CellHoverListener(this));
 
         this.initializeGrid(this.obstacleRepository.findAll());
+
+        this.drawObstacles();
+
+        this.canvas.widthProperty().bind(widthProperty());
+        this.canvas.heightProperty().bind(heightProperty());
+
+        this.widthProperty().addListener(evt -> {
+            try {
+                drawObstacles();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        this.heightProperty().addListener(evt -> {
+            try {
+                drawObstacles();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    private void drawObstacles() throws IOException {
+        int columns = this.getColumns();
+        int rows = this.getRows();
+        Cell[][] cells = this.getCells();
+        List<Obstacle> obstacles = obstacleRepository.findAll();
+        int cellSize = this.getCellSize();
+        double zoomFactor = this.getZoomFactor();
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        for (int col = 0; col < columns; col++) {
+            for (int row = 0; row < rows; row++) {
+                Cell cell = cells[row][col];
+                double x = col * cellSize * zoomFactor;
+                double y = row * cellSize * zoomFactor;
+
+                Color colorObstacle = cell.getColor();
+                gc.setFill(colorObstacle);
+
+                if(cell.getType() == CellType.RECT_OBST){
+                    gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
+                }
+                else if (cell.getType() == CellType.CIRC_OBST) {
+                    gc.fillOval(x,y,80.0,50.0);
+                }
+            }
+        }
     }
 
     public void initializeGrid(List<Obstacle> obstacles) {
@@ -67,7 +118,6 @@ public class SpaceGrid extends Grid {
 
                 this.setCell(cell);
             }
-
         }
     }
 

@@ -8,14 +8,12 @@ import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
 
 public abstract class Grid extends Pane implements IGridEvents {
-    private Canvas canvas;
+    protected Canvas canvas;
+    private Cell[][] cells;
     private int rows;
     private int columns;
     private int cellSize = 8;
     private double zoomFactor = 1;
-
-    // La liste des cellules **devrait** être maintenue ailleurs
-    private Cell[][] cells;
 
     public Grid(int rows, int columns) {
         this.rows = rows;
@@ -84,24 +82,7 @@ public abstract class Grid extends Pane implements IGridEvents {
                 gc.strokeLine(y + 0.5, 0, y + 0.5, canvasHeight);
             }
         }
-//        DRAW OBSTACLES
-        for (int col = 0; col < columns; col++) {
-            for (int row = 0; row < rows; row++) {
-                Cell cell = cells[row][col];
-                double x = col * cellSize * zoomFactor;
-                double y = row * cellSize * zoomFactor;
 
-                Color colorObstacle = cell.getColor();
-                gc.setFill(colorObstacle);
-
-                if(cell.getType() == CellType.RECT_OBST){
-                    gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
-                }
-                else if (cell.getType() == CellType.CIRC_OBST) {
-                    gc.fillOval(x,y,80.0,50.0);
-                }
-            }
-        }
         double x = columns / 2.0 * cellSize * zoomFactor;
         double y = rows / 2.0 * cellSize * zoomFactor;
 
@@ -125,11 +106,9 @@ public abstract class Grid extends Pane implements IGridEvents {
     public Cell[][] getCells() {
         return cells;
     }
-
     public void setCells(Cell[][] cells) {
         this.cells = cells;
     }
-
     public void setCell(Cell cell) {
         this.cells[(int) cell.getX()][(int) cell.getY()] = cell;
     }
@@ -137,7 +116,6 @@ public abstract class Grid extends Pane implements IGridEvents {
     public int getRows() {
         return rows;
     }
-
     public void setRows(int rows) {
         this.rows = rows;
     }
@@ -145,7 +123,6 @@ public abstract class Grid extends Pane implements IGridEvents {
     public int getColumns() {
         return columns;
     }
-
     public void setColumns(int columns) {
         this.columns = columns;
     }
@@ -153,8 +130,14 @@ public abstract class Grid extends Pane implements IGridEvents {
     public int getCellSize() {
         return cellSize;
     }
-
     public void setCellSize(int cellSize) {
         this.cellSize = cellSize;
+    }
+
+    public double getZoomFactor() {
+        return zoomFactor;
+    }
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
     }
 }
