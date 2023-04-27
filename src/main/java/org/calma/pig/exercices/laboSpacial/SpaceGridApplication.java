@@ -54,20 +54,16 @@ public class SpaceGridApplication extends Application {
         StackPane.setAlignment(spaceGrid, Pos.CENTER);
 
         BorderPane root = null;
-        int cellSize = spaceGrid.getCellSize();
         if(withGesture){
             GesturePane gp = new GesturePane(stackPane);
-            gp.setMaxSize(cellSize * columns + 0.5, cellSize * rows + 0.5);
 
             root = new BorderPane(gp);
         }
         else{
-            stackPane.setMaxSize(cellSize * columns + 0.5, cellSize * rows + 0.5);
-
             root = new BorderPane(stackPane);
         }
 
-        root.setPadding(new Insets(40.0, 0.0, 40.0, 0.0));
+        root.setPadding(new Insets(10.0));
 
         return root;
     }
