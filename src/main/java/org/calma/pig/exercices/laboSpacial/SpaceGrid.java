@@ -61,6 +61,14 @@ public class SpaceGrid extends Grid {
         int cellSize = this.getCellSize();
         double zoomFactor = this.getZoomFactor();
 
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
+        double gridWidth = columns * cellSize;
+        double gridHeight = rows * cellSize;
+
+        double zeroW = canvasWidth/2 - gridWidth/2;
+        double zeroH = canvasHeight/2 - gridHeight/2;
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         for (int col = 0; col < columns; col++) {
@@ -74,7 +82,7 @@ public class SpaceGrid extends Grid {
                 gc.setFill(colorObstacle);
 
                 if(cell.getType() == CellType.RECT_OBST){
-                    gc.fillRect(y + 0.5, x + 0.5, cellSize * zoomFactor, cellSize * zoomFactor);
+                    gc.fillRect(y + 0.5 + zeroW, x + 0.5 + zeroH, cellSize * zoomFactor, cellSize * zoomFactor);
                 }
                 else if (cell.getType() == CellType.CIRC_OBST) {
                     CircularObstacle obstacle = null;
@@ -88,7 +96,7 @@ public class SpaceGrid extends Grid {
                     }
                     int diametre = obstacle.getDiametre();
 
-                    gc.fillOval(x - diametre / 2.0,y - diametre / 2.0,diametre,diametre);
+                    gc.fillOval(x - diametre / 2.0 + zeroW,y - diametre / 2.0 + zeroH, diametre, diametre);
                 }
             }
         }
@@ -142,7 +150,6 @@ public class SpaceGrid extends Grid {
             return;
         }
     }
-
 
     @Override
     public void onCellHover(Cell cell, int gridX, int gridY) {

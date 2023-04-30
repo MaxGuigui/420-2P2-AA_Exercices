@@ -52,6 +52,9 @@ public abstract class Grid extends Pane implements IGridEvents {
         double gridWidth = columns * cellSize;
         double gridHeight = rows * cellSize;
 
+        double zeroW = canvasWidth/2 - gridWidth/2;
+        double zeroH = canvasHeight/2 - gridHeight/2;
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         gc.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -70,7 +73,7 @@ public abstract class Grid extends Pane implements IGridEvents {
                     gc.setLineWidth(1.0);
                     gc.setStroke(Color.GRAY);
                 }
-                gc.strokeLine(0, x + 0.5, gridWidth, x + 0.5);
+                gc.strokeLine(0 + zeroW, x + 0.5 + zeroH, gridWidth + zeroW, x + 0.5 + zeroH);
 
 //                DRAW VERTICAL LINES
                 if((row + 5) % 10 == 0){
@@ -81,15 +84,21 @@ public abstract class Grid extends Pane implements IGridEvents {
                     gc.setLineWidth(1.0);
                     gc.setStroke(Color.GRAY);
                 }
-                gc.strokeLine(y + 0.5, 0, y + 0.5, gridHeight);
+                gc.strokeLine(y + 0.5 + zeroW, 0 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH);
             }
         }
+
         drawMainLines();
     }
 
     protected void drawMainLines() {
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
         double gridWidth = columns * cellSize;
         double gridHeight = rows * cellSize;
+
+        double zeroW = canvasWidth/2 - gridWidth/2;
+        double zeroH = canvasHeight/2 - gridHeight/2;
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -99,18 +108,18 @@ public abstract class Grid extends Pane implements IGridEvents {
 //        DRAW X AND Y AXES
         gc.setLineWidth(1.0);
         gc.setStroke(Color.BLACK);
-        gc.strokeLine(0, x + 0.5, gridWidth, x + 0.5);
-        gc.strokeLine(y + 0.5, 0, y + 0.5, gridHeight);
+        gc.strokeLine(0 + zeroW, x + 0.5 + zeroH, gridWidth + zeroW, x + 0.5 + zeroH);
+        gc.strokeLine(y + 0.5 + zeroW, 0 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH);
 
         x = columns * cellSize * zoomFactor;
         y = rows * cellSize * zoomFactor;
 
 //        DRAW BORDERS
         gc.setLineWidth(2.0);
-        gc.strokeLine(0, 0.5, gridWidth, 0.5);
-        gc.strokeLine(0.5, 0, 0.5, gridHeight);
-        gc.strokeLine(0, x + 0.5, gridWidth, x + 0.5);
-        gc.strokeLine(y + 0.5, 0, y + 0.5, gridHeight);
+        gc.strokeLine(0 + zeroW, 0.5 + zeroH, gridWidth + zeroW, 0.5 + zeroH);
+        gc.strokeLine(0.5 + zeroW, 0 + zeroH, 0.5 + zeroW, gridHeight + zeroH);
+        gc.strokeLine(0 + zeroW, x + 0.5 + zeroH, gridWidth + zeroW, x + 0.5 + zeroH);
+        gc.strokeLine(y + 0.5 + zeroW, 0 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH);
     }
 
     public Cell[][] getCells() {
