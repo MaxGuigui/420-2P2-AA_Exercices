@@ -4,8 +4,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
-import org.calma.pig.exercices.laboSpacial.models.cell.CellType;
 
 public abstract class Grid extends Pane implements IGridEvents {
     protected Canvas canvas;
@@ -89,6 +89,8 @@ public abstract class Grid extends Pane implements IGridEvents {
         }
 
         drawMainLines();
+
+        drawGridInformations();
     }
 
     protected void drawMainLines() {
@@ -120,6 +122,47 @@ public abstract class Grid extends Pane implements IGridEvents {
         gc.strokeLine(0.5 + zeroW, 0 + zeroH, 0.5 + zeroW, gridHeight + zeroH);
         gc.strokeLine(0 + zeroW, x + 0.5 + zeroH, gridWidth + zeroW, x + 0.5 + zeroH);
         gc.strokeLine(y + 0.5 + zeroW, 0 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH);
+    }
+
+    private void drawGridInformations(){
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
+        double gridWidth = columns * cellSize;
+        double gridHeight = rows * cellSize;
+
+        double zeroW = canvasWidth/2 - gridWidth/2;
+        double zeroH = canvasHeight/2 - gridHeight/2;
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        gc.setFill(Color.BLACK);
+        gc.setFont(new Font(20.0));
+        gc.fillText("420-4P2-AA, H23", canvasWidth/2 - 75, 20.0);
+
+        gc.setFont(new Font(10));
+        gc.fillText("-50", zeroW - 8, zeroH - 5);
+        gc.fillText("-40", zeroW - 8 + cellSize * zoomFactor * 10, zeroH - 5);
+        gc.fillText("-30", zeroW - 8 + cellSize * zoomFactor * 20, zeroH - 5);
+        gc.fillText("-20", zeroW - 8 + cellSize * zoomFactor * 30, zeroH - 5);
+        gc.fillText("-10", zeroW - 8 + cellSize * zoomFactor * 40, zeroH - 5);
+        gc.fillText("0", canvasWidth/2 - 2, zeroH - 5);
+        gc.fillText("10", canvasWidth/2 - 5 + cellSize * zoomFactor * 10, zeroH - 5);
+        gc.fillText("20", canvasWidth/2 - 5 + cellSize * zoomFactor * 20, zeroH - 5);
+        gc.fillText("30", canvasWidth/2 - 5 + cellSize * zoomFactor * 30, zeroH - 5);
+        gc.fillText("40", canvasWidth/2 - 5 + cellSize * zoomFactor * 40, zeroH - 5);
+        gc.fillText("50", canvasWidth/2 - 5 + cellSize * zoomFactor * 50, zeroH - 5);
+
+        gc.fillText("-50", zeroW - 20, zeroH + 5);
+        gc.fillText("-40", zeroW - 20, zeroH + 5 + cellSize * zoomFactor * 10);
+        gc.fillText("-30", zeroW - 20, zeroH + 5 + cellSize * zoomFactor * 20);
+        gc.fillText("-20", zeroW - 20, zeroH + 5 + cellSize * zoomFactor * 30);
+        gc.fillText("-10", zeroW - 20, zeroH + 5 + cellSize * zoomFactor * 40);
+        gc.fillText("0", zeroW - 10, canvasHeight/2 + 5);
+        gc.fillText("10", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 10);
+        gc.fillText("20", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 20);
+        gc.fillText("30", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 30);
+        gc.fillText("40", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 40);
+        gc.fillText("50", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 50);
     }
 
     public Cell[][] getCells() {
