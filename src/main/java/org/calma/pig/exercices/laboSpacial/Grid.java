@@ -118,10 +118,10 @@ public abstract class Grid extends Pane implements IGridEvents {
 
 //        DRAW BORDERS
         gc.setLineWidth(2.0);
-        gc.strokeLine(0 + zeroW, 0.5 + zeroH, gridWidth + zeroW, 0.5 + zeroH);
-        gc.strokeLine(0.5 + zeroW, 0 + zeroH, 0.5 + zeroW, gridHeight + zeroH);
-        gc.strokeLine(0 + zeroW, x + 0.5 + zeroH, gridWidth + zeroW, x + 0.5 + zeroH);
-        gc.strokeLine(y + 0.5 + zeroW, 0 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH);
+        gc.strokeLine(0.5 + zeroW, 0.5 + zeroH, gridWidth + zeroW + 0.5, 0.5 + zeroH);
+        gc.strokeLine(0.5 + zeroW, 0.5 + zeroH, 0.5 + zeroW, gridHeight + zeroH);
+        gc.strokeLine(0.5 + zeroW, x + 0.5 + zeroH, gridWidth + zeroW + 0.5, x + 0.5 + zeroH);
+        gc.strokeLine(y + 0.5 + zeroW, 0.5 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH + 0.5);
     }
 
     private void drawGridInformations(){
