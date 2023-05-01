@@ -66,7 +66,7 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
                 "Obstacle4",
                 "Moyen obstacle rectangulaire rouge",
                 cellsOb4,
-                new Cell(48,72));
+                new Cell(56,67));
         ob4.setColor(Color.RED);
 
         CircularObstacle ob5 = new CircularObstacle(
