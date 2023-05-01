@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.calma.pig.exercices.laboSpacial.models.cell.Cell;
 
-public abstract class Grid extends Pane implements IGridEvents {
+public abstract class Grid extends Pane{
     protected Canvas canvas;
     private Cell[][] cells;
     private int rows;
