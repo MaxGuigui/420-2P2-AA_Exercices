@@ -137,7 +137,7 @@ public abstract class Grid extends Pane{
 
         gc.setFill(Color.BLACK);
         gc.setFont(new Font(20.0));
-        gc.fillText("420-4P2-AA, H23", canvasWidth/2 - 75, 20.0);
+        gc.fillText("420-4P2-AA, H23", canvasWidth/2 - 75, zeroH - 60);
 
         gc.setFont(new Font(10));
         gc.fillText("-50", zeroW - 8, zeroH - 5);
