@@ -83,12 +83,28 @@ public class InMemoryObstacleRepository implements IObstacleRepository {
                 new Cell(95,2));
         ob6.setColor(Color.GRAY);
 
+        CircularObstacle ob7 = new CircularObstacle(
+                "Obstacle7",
+                "Moyen obstacle circulaire bleu clair",
+                6,
+                new Cell(99,98));
+        ob7.setColor(Color.LIGHTBLUE);
+
+        CircularObstacle ob8 = new CircularObstacle(
+                "Obstacle8",
+                "Gros obstacle circulaire orange",
+                12,
+                new Cell(5,96));
+        ob8.setColor(Color.ORANGE);
+
         obstacles.add(ob1);
         obstacles.add(ob2);
         obstacles.add(ob3);
         obstacles.add(ob4);
         obstacles.add(ob5);
         obstacles.add(ob6);
+        obstacles.add(ob7);
+        obstacles.add(ob8);
 
         this.data = obstacles;
     }

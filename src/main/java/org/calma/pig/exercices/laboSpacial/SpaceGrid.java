@@ -102,6 +102,8 @@ public class SpaceGrid extends Grid {
         }
 
         drawMainLines();
+        clearAroundTheGrid();
+        drawGridInformations();
     }
 
     public void initializeGrid(List<Obstacle> obstacles) {

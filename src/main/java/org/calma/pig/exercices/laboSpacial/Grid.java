@@ -124,7 +124,7 @@ public abstract class Grid extends Pane implements IGridEvents {
         gc.strokeLine(y + 0.5 + zeroW, 0.5 + zeroH, y + 0.5 + zeroW, gridHeight + zeroH + 0.5);
     }
 
-    private void drawGridInformations(){
+    protected void drawGridInformations(){
         double canvasWidth = canvas.getWidth();
         double canvasHeight = canvas.getHeight();
         double gridWidth = columns * cellSize;
@@ -163,6 +163,23 @@ public abstract class Grid extends Pane implements IGridEvents {
         gc.fillText("30", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 30);
         gc.fillText("40", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 40);
         gc.fillText("50", zeroW - 15, canvasHeight/2 + 5 + cellSize * zoomFactor * 50);
+    }
+
+    protected void clearAroundTheGrid(){
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
+        double gridWidth = columns * cellSize;
+        double gridHeight = rows * cellSize;
+
+        double zeroW = canvasWidth/2 - gridWidth/2;
+        double zeroH = canvasHeight/2 - gridHeight/2;
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        gc.clearRect(0,0, canvasWidth, zeroH - 0.5);
+        gc.clearRect(0,0,zeroW - 0.5,canvasHeight);
+        gc.clearRect(zeroW + gridWidth + 2,0, canvasWidth, canvasHeight);
+        gc.clearRect(0,zeroH + gridHeight + 2, canvasWidth, canvasHeight);
     }
 
     public Cell[][] getCells() {
